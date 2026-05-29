@@ -8,10 +8,10 @@
 - [x] `catalog/owasp-llm-asi.yaml` complete ([#29](https://github.com/edgesentry/agent-control/pull/29))
 - [x] Guardian: ≥3 hooks, YAML policies ([#28](https://github.com/edgesentry/agent-control/pull/28))
 - [x] `policies/p0/` — OWASP-tagged portable YAML pack ([#30](https://github.com/edgesentry/agent-control/pull/30))
-- [x] `apps/lab`: smoke suite 10/10 green ([#31](https://github.com/edgesentry/agent-control/pull/31), in review)
+- [x] `apps/lab`: smoke suite 10/10 green ([#31](https://github.com/edgesentry/agent-control/pull/31))
 - [x] `examples/ocsf-*.json` committed (#5)
 - [x] OWASP coverage matrix — probe + OCSF columns
-- [ ] `apps/soc`: triage + analyst gate demo
+- [x] `apps/soc`: triage playbook (#9 — analyst gate in #10)
 - [ ] Demo script + recorded video
 - [ ] Tag `v0.1.0-submission`
 

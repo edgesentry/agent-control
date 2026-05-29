@@ -408,7 +408,11 @@ dependencies = [
 name = "soc"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "guardian",
+ "serde",
+ "serde_json",
+ "thiserror",
  "trace",
 ]
 

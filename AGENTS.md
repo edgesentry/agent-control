@@ -61,6 +61,8 @@ cargo clippy --workspace --all-targets -- -D warnings
 cargo deny check licenses
 cargo run -p lab -- smoke   # P0 OWASP suite (also in CI)
 make smoke                  # smoke + examples/smoke-report.json
+cargo run -p soc -- triage  # CS01 alert-triage playbook (also in CI)
+make soc-triage             # triage + examples/soc-triage-report.json
 ```
 
 CI: `.github/workflows/ci.yml` (includes **license_check**). Docs: `mkdocs build --strict` (see `requirements-docs.txt`).
@@ -87,7 +89,8 @@ Before finishing a change: workspace build + tests green; clippy clean; no secre
 | 6 | `policies/p0` ✓ |
 | 7 | `apps/lab` ✓ |
 | 8 | P0 smoke 10/10 ✓ |
-| 9–10 | `apps/soc` + analyst gate |
+| 9 | `apps/soc` ✓ |
+| 10 | Analyst approval gate |
 | 11–15 | Coverage matrix, docs, demo, tag `v0.1.0-submission` |
 
 Tracker: [docs/submission/roadmap.md](docs/submission/roadmap.md). Do not expand into full SOC platform, cloud-only SaaS, or L1 audit chain.

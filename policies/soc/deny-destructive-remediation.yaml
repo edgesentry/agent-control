@@ -1,0 +1,19 @@
+# CS01 — block autonomous destructive SOC remediation on toolCallRequest
+version: "1"
+rules:
+  - id: soc-deny-destructive-remediation
+    hooks: [toolCallRequest]
+    owasp: [ASI09, LLM06]
+    match:
+      tool_id_contains:
+        - isolate
+        - quarantine
+        - block_ip
+        - disable_account
+        - wipe
+        - kill_process
+        - shutdown_host
+        - revoke_sessions
+    decision: deny
+    message: Autonomous destructive remediation blocked — analyst gate required (CS01)
+    reason_codes: [AC-SOC01-remediation-gate]

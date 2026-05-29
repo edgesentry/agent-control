@@ -1,0 +1,14 @@
+{
+  "alert_id": "AL-2026-0042",
+  "source": "siem-mock",
+  "rule": "Suspicious PowerShell encoded command",
+  "severity": "high",
+  "timestamp": "2026-05-29T08:15:00Z",
+  "host": "ws-finance-17",
+  "user": "jsmith",
+  "ioc": {
+    "type": "ip",
+    "value": "203.0.113.42"
+  },
+  "raw": "EncodedCommand detected on ws-finance-17 for user jsmith"
+}
