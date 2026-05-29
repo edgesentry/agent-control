@@ -4,7 +4,13 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "ACS Instrument hooks and YAML policy engine (scaffold)"
+description = "ACS Instrument hooks and YAML policy engine"
 
-[lib]
-path = "src/lib.rs"
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

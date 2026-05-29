@@ -10,27 +10,27 @@ SPDX expression for workspace crates: `MIT OR Apache-2.0` (see root `Cargo.toml`
 
 Policy: [deny.toml](deny.toml) — **allow-list only** (cargo-deny 0.19+). Permissive licenses are allowed; **GPL / AGPL / LGPL / MPL** and other non-listed licenses fail the check.
 
-| Crate | Version | License | Used by |
-|-------|---------|---------|---------|
-| *(none)* | — | — | The workspace currently has **no third-party crates** in `Cargo.lock`. |
+| Crate | License | Used by |
+|-------|---------|---------|
+| `serde` | MIT OR Apache-2.0 | `guardian`, `lab` |
+| `serde_json` | MIT OR Apache-2.0 | `guardian`, `lab` |
+| `serde_yaml` | MIT OR Apache-2.0 | `guardian` (policy packs) |
+| `thiserror` | MIT OR Apache-2.0 | `guardian` |
+| `indexmap` | MIT OR Apache-2.0 | transitive (`serde_yaml`) |
+| `unsafe-libyaml` | MIT | transitive (`serde_yaml`) |
 
-When dependencies are added, regenerate this table:
+Regenerate after dependency changes:
 
 ```bash
-cargo tree -e normal --prefix none | sort -u
 cargo deny check licenses
+cargo tree -e normal --prefix none
 ```
 
-## Declared workspace dependencies (not yet in lockfile)
-
-Listed in `[workspace.dependencies]` for upcoming crates (#4–#5). Licenses are expected to pass `cargo deny` when linked:
+## Workspace dependencies (not yet linked)
 
 | Crate | Expected license | Planned use |
 |-------|------------------|-------------|
-| `serde` | MIT OR Apache-2.0 | Serialization |
-| `serde_json` | MIT OR Apache-2.0 | JSON artefacts |
-| `thiserror` | MIT OR Apache-2.0 | Error types |
-| `tracing` | MIT OR Apache-2.0 | Instrumentation / trace (#5) |
+| `tracing` | MIT OR Apache-2.0 | `crates/trace` (#5) |
 
 ## CI
 

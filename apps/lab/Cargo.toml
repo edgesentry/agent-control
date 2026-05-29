@@ -13,4 +13,5 @@ path = "src/main.rs"
 
 [dependencies]
 guardian = { path = "../../crates/guardian" }
+serde_json = { workspace = true }
 trace = { path = "../../crates/trace" }
