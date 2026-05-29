@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0",
+  "playbook": "alert-triage-enrich-recommend",
+  "alert_id": "AL-2026-0042",
+  "severity": "high",
+  "enrichment": {
+    "ioc_type": "ip",
+    "ioc_value": "203.0.113.42",
+    "reputation": "suspicious",
+    "related_alerts": 2
+  },
+  "recommendation": "Alert AL-2026-0042 (high) on host ws-finance-17: IOC ip=203.0.113.42 flagged as suspicious. Recommend manual investigation and analyst-approved containment — autonomous isolation blocked by Guardian.",
+  "remediation_blocked": true,
+  "blocked_tool": "isolate_host",
+  "ocsf_event_count": 5,
+  "steps": [
+    {
+      "step": "triage-start",
+      "hook": "agentTrigger",
+      "acs_method": "steps/agentTrigger",
+      "decision": "allow",
+      "message": "No matching policy; default allow",
+      "ocsf_uid": "span-000000000002"
+    },
+    {
+      "step": "enrich-ioc",
+      "hook": "toolCallRequest",
+      "acs_method": "steps/toolCallRequest",
+      "decision": "allow",
+      "message": "No matching policy; default allow",
+      "ocsf_uid": "span-000000000003"
+    },
+    {
+      "step": "enrich-context",
+      "hook": "toolCallRequest",
+      "acs_method": "steps/toolCallRequest",
+      "decision": "allow",
+      "message": "No matching policy; default allow",
+      "ocsf_uid": "span-000000000004"
+    },
+    {
+      "step": "remediation-attempt",
+      "hook": "toolCallRequest",
+      "acs_method": "steps/toolCallRequest",
+      "decision": "deny",
+      "message": "Autonomous destructive remediation blocked — analyst gate required (CS01)",
+      "reason_codes": [
+        "AC-SOC01-remediation-gate"
+      ],
+      "ocsf_uid": "span-000000000005"
+    },
+    {
+      "step": "recommend",
+      "hook": "agentResponse",
+      "acs_method": "steps/message",
+      "decision": "allow",
+      "message": "No matching policy; default allow",
+      "ocsf_uid": "span-000000000006"
+    }
+  ]
+}

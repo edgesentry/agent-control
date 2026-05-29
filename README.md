@@ -37,7 +37,7 @@ On-prem and air-gapped steps: [docs — Getting started](https://edgesentry.gith
 
 ## Status
 
-**L2 + L3 CS02 core in place** — smoke 10/10 with OCSF export ([#5](https://github.com/edgesentry/agent-control/issues/5) in review). SOC (#9–#10) is next.
+**L2 + L3 CS02 complete** — smoke 10/10 with OCSF export. **CS01 triage** (#9) in review; analyst gate (#10) next.
 
 | Area | Status | PR / issue |
 |------|--------|------------|
@@ -45,12 +45,15 @@ On-prem and air-gapped steps: [docs — Getting started](https://edgesentry.gith
 | Dual license + `cargo-deny` | ✓ Shipped | #2, [#27](https://github.com/edgesentry/agent-control/pull/27) |
 | OWASP catalog + Guardian + policies | ✓ Shipped | #3–#4, #6 · [#29](https://github.com/edgesentry/agent-control/pull/29)–[#30](https://github.com/edgesentry/agent-control/pull/30) |
 | `apps/lab` + smoke 10/10 | ✓ Shipped | #7–#8 · [#31](https://github.com/edgesentry/agent-control/pull/31) |
-| **Trace → OCSF export** | **In review** | [#5](https://github.com/edgesentry/agent-control/issues/5) |
-| SOC demo | Planned | [#9](https://github.com/edgesentry/agent-control/issues/9)–[#10](https://github.com/edgesentry/agent-control/issues/10) |
+| Trace → OCSF export | ✓ Shipped | [#5](https://github.com/edgesentry/agent-control/issues/5) · [#32](https://github.com/edgesentry/agent-control/pull/32) |
+| SOC triage playbook | **In review** | [#9](https://github.com/edgesentry/agent-control/issues/9) |
+| Analyst gate | Planned | [#10](https://github.com/edgesentry/agent-control/issues/10) |
 
 ```bash
 cargo run -p lab -- smoke --trace-out examples
 make smoke
+cargo run -p soc -- triage --trace-out examples
+make soc-triage
 ```
 
 Detail: [submission progress](docs/submission/progress.md) · [issue roadmap](https://edgesentry.github.io/agent-control/submission/roadmap/).
