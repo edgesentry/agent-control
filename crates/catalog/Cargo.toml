@@ -1,0 +1,12 @@
+[package]
+name = "catalog"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "OWASP LLM + Agentic risk register loader (catalog/owasp-llm-asi.yaml)"
+
+[dependencies]
+serde = { workspace = true }
+serde_yaml = { workspace = true }
+thiserror = { workspace = true }

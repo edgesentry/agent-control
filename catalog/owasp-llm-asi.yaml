@@ -1,5 +1,239 @@
-# OWASP LLM Top 10 + Agentic Top 10 risk register (scaffold).
-# Full mapping: issue #3 — catalog/owasp-llm-asi.yaml
-version: "0.0.0-scaffold"
+# OWASP Gen AI risk register — machine-readable source for policies, smoke tests, and CoC annex.
+# Authority: OWASP LLM Top 10 (2025) + Agentic Top 10 (2026). Hook mapping: edgesentry-commercial analytics.
+version: "1.0.0"
 schema: agent-control/catalog/v1
-risks: []
+updated: "2026-05-29"
+sources:
+  - name: OWASP Top 10 for LLM Applications 2025
+    url: https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/
+  - name: OWASP Top 10 for Agentic Applications 2026
+    url: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+  - name: EdgeSentry Cap Vista ACS mapping
+    url: https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/analytics/cap-vista-challenge-acs-mapping.md
+
+# test_id_prefix: AC-{LLM|ASI}{nn} — smoke probes use AC-{LLM|ASI}{nn}-{slug}
+# hooks: camelCase Guardian hook ids; acs_methods: ACS JSON-RPC step names
+# challenges: CS01 | CS02 | both
+
+risks:
+  # --- LLM Top 10 (2025) ---
+  - id: LLM01:2025
+    family: llm
+    name: Prompt Injection
+    summary: User or indirect content alters model or agent behaviour via injected instructions.
+    hooks: [knowledgeRetrieval, agentTrigger, userMessage]
+    acs_methods: [steps/knowledgeRetrieval, steps/agentTrigger, steps/message]
+    test_id_prefix: AC-LLM01
+    challenges: [both]
+    p0_smoke: true
+    related: [ASI01:2026]
+
+  - id: LLM02:2025
+    family: llm
+    name: Sensitive Information Disclosure
+    summary: PII, credentials, or confidential data leaked via model output or context.
+    hooks: [agentResponse, toolCallResult]
+    acs_methods: [steps/message, steps/toolCallResult]
+    test_id_prefix: AC-LLM02
+    challenges: [both]
+    p0_smoke: true
+    related: []
+
+  - id: LLM03:2025
+    family: llm
+    name: Supply Chain
+    summary: Compromised models, dependencies, or deployment platforms in the AI stack.
+    hooks: [agbom, agentTrigger]
+    acs_methods: [inspect/agbom, steps/agentTrigger]
+    test_id_prefix: AC-LLM03
+    challenges: [CS02]
+    p0_smoke: false
+    related: [ASI04:2026]
+
+  - id: LLM04:2025
+    family: llm
+    name: Data and Model Poisoning
+    summary: Poisoned training, fine-tuning, or embedding data introduces backdoors or bias.
+    hooks: [memoryStore, knowledgeRetrieval]
+    acs_methods: [steps/memoryStore, steps/knowledgeRetrieval]
+    test_id_prefix: AC-LLM04
+    challenges: [CS02]
+    p0_smoke: false
+    related: [ASI06:2026]
+
+  - id: LLM05:2025
+    family: llm
+    name: Improper Output Handling
+    summary: Unvalidated LLM output passed to downstream systems or users.
+    hooks: [agentResponse, toolCallResult]
+    acs_methods: [steps/message, steps/toolCallResult]
+    test_id_prefix: AC-LLM05
+    challenges: [both]
+    p0_smoke: false
+    related: [ASI09:2026]
+
+  - id: LLM06:2025
+    family: llm
+    name: Excessive Agency
+    summary: LLM or agent invokes tools or systems beyond intended scope or budget.
+    hooks: [toolCallRequest]
+    acs_methods: [steps/toolCallRequest]
+    test_id_prefix: AC-LLM06
+    challenges: [both]
+    p0_smoke: true
+    related: [ASI02:2026]
+
+  - id: LLM07:2025
+    family: llm
+    name: System Prompt Leakage
+    summary: System or developer instructions exposed to users or attackers.
+    hooks: [agentResponse, userMessage]
+    acs_methods: [steps/message, steps/message]
+    test_id_prefix: AC-LLM07
+    challenges: [CS02]
+    p0_smoke: false
+    related: []
+
+  - id: LLM08:2025
+    family: llm
+    name: Vector and Embedding Weaknesses
+    summary: RAG pipeline weaknesses enable injection or unauthorized data access.
+    hooks: [knowledgeRetrieval]
+    acs_methods: [steps/knowledgeRetrieval]
+    test_id_prefix: AC-LLM08
+    challenges: [CS02]
+    p0_smoke: false
+    related: [ASI06:2026]
+
+  - id: LLM09:2025
+    family: llm
+    name: Misinformation
+    summary: False or misleading model output presented as authoritative.
+    hooks: [agentResponse]
+    acs_methods: [steps/message]
+    test_id_prefix: AC-LLM09
+    challenges: [both]
+    p0_smoke: false
+    related: [ASI09:2026]
+
+  - id: LLM10:2025
+    family: llm
+    name: Unbounded Consumption
+    summary: Unrestricted tokens, API calls, or loops causing cost or DoS impact.
+    hooks: [toolCallRequest, agentTrigger]
+    acs_methods: [steps/toolCallRequest, steps/agentTrigger]
+    test_id_prefix: AC-LLM10
+    challenges: [both]
+    p0_smoke: true
+    related: [ASI10:2026]
+
+  # --- Agentic Top 10 (2026) ---
+  - id: ASI01:2026
+    family: agentic
+    name: Agent Goal Hijack
+    summary: Attacker redirects agent goals via direct or indirect instruction injection.
+    hooks: [knowledgeRetrieval, agentTrigger, userMessage]
+    acs_methods: [steps/knowledgeRetrieval, steps/agentTrigger, steps/message]
+    test_id_prefix: AC-ASI01
+    challenges: [both]
+    p0_smoke: true
+    related: [LLM01:2025]
+
+  - id: ASI02:2026
+    family: agentic
+    name: Tool Misuse and Exploitation
+    summary: Legitimate tools abused via unsafe composition, recursion, or excessive calls.
+    hooks: [toolCallRequest]
+    acs_methods: [steps/toolCallRequest]
+    test_id_prefix: AC-ASI02
+    challenges: [both]
+    p0_smoke: true
+    related: [LLM06:2025]
+
+  - id: ASI03:2026
+    family: agentic
+    name: Agent Identity and Privilege Abuse
+    summary: Weak or delegated identity allows actions beyond intended authority.
+    hooks: [toolCallRequest, agentTrigger]
+    acs_methods: [steps/toolCallRequest, steps/agentTrigger]
+    test_id_prefix: AC-ASI03
+    challenges: [both]
+    p0_smoke: false
+    related: [LLM02:2025]
+
+  - id: ASI04:2026
+    family: agentic
+    name: Agentic Supply Chain Compromise
+    summary: Runtime trust in MCP tools, agents, or registries is violated.
+    hooks: [agbom, toolCallRequest]
+    acs_methods: [inspect/agbom, steps/toolCallRequest]
+    test_id_prefix: AC-ASI04
+    challenges: [CS02]
+    p0_smoke: true
+    related: [LLM03:2025]
+
+  - id: ASI05:2026
+    family: agentic
+    name: Unexpected Code Execution
+    summary: Agent-triggered shell or code runs without adequate validation or sandboxing.
+    hooks: [toolCallRequest]
+    acs_methods: [steps/toolCallRequest]
+    test_id_prefix: AC-ASI05
+    challenges: [both]
+    p0_smoke: true
+    related: [LLM05:2025]
+
+  - id: ASI06:2026
+    family: agentic
+    name: Memory and Context Poisoning
+    summary: Persistent or session memory manipulated to steer future agent actions.
+    hooks: [memoryStore, knowledgeRetrieval]
+    acs_methods: [steps/memoryStore, steps/knowledgeRetrieval]
+    test_id_prefix: AC-ASI06
+    challenges: [CS02]
+    p0_smoke: true
+    related: [LLM04:2025]
+
+  - id: ASI07:2026
+    family: agentic
+    name: Insecure Inter-Agent Communication
+    summary: Spoofed or injected messages between collaborating agents.
+    hooks: [a2a]
+    acs_methods: [a2a/send, a2a/message/stream]
+    test_id_prefix: AC-ASI07
+    challenges: [CS02]
+    p0_smoke: true
+    related: []
+
+  - id: ASI08:2026
+    family: agentic
+    name: Cascading Agent Failures
+    summary: Small faults propagate through tool chains or multi-agent dependencies.
+    hooks: [trace]
+    acs_methods: [trace/correlation]
+    test_id_prefix: AC-ASI08
+    challenges: [both]
+    p0_smoke: true
+    related: []
+
+  - id: ASI09:2026
+    family: agentic
+    name: Human-Agent Trust Exploitation
+    summary: Users over-trust agent output and approve harmful high-impact actions.
+    hooks: [agentResponse, humanGate]
+    acs_methods: [steps/message, instrument/humanGate]
+    test_id_prefix: AC-ASI09
+    challenges: [both]
+    p0_smoke: true
+    related: [LLM09:2025]
+
+  - id: ASI10:2026
+    family: agentic
+    name: Rogue Agents
+    summary: Goal drift, concealment, or runaway autonomous action beyond policy.
+    hooks: [agentTrigger, toolCallRequest]
+    acs_methods: [steps/agentTrigger, steps/toolCallRequest]
+    test_id_prefix: AC-ASI10
+    challenges: [both]
+    p0_smoke: true
+    related: [LLM10:2025]

@@ -59,7 +59,10 @@ fn sample_rules() -> PolicySet {
 fn hook_acs_methods_cover_submission_subset() {
     assert_eq!(Hook::ToolCallRequest.acs_method(), "steps/toolCallRequest");
     assert_eq!(Hook::AgentResponse.acs_method(), "steps/message");
-    assert_eq!(Hook::KnowledgeRetrieval.acs_method(), "steps/knowledgeRetrieval");
+    assert_eq!(
+        Hook::KnowledgeRetrieval.acs_method(),
+        "steps/knowledgeRetrieval"
+    );
 }
 
 #[test]
@@ -148,11 +151,8 @@ fn load_repo_p0_policy_pack() {
     let p0 = manifest.join("../../policies/p0");
     let g = Guardian::load_from_dir(&p0).expect("repo policies/p0");
     assert!(g.policies().rules().len() >= 3);
-    let req = HookRequest::from_jsonrpc(
-        "steps/toolCallRequest",
-        tool_call_params("bash_shell"),
-    )
-    .unwrap();
+    let req =
+        HookRequest::from_jsonrpc("steps/toolCallRequest", tool_call_params("bash_shell")).unwrap();
     assert_eq!(g.evaluate(&req).decision, Decision::Deny);
 }
 

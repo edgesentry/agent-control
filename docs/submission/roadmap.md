@@ -8,8 +8,8 @@ GitHub issues track the Cap Vista **submission MVP**. Week-by-week plan: [Schedu
 |-------|-------------|--------|
 | [#1](https://github.com/edgesentry/agent-control/issues/1) | Monorepo scaffold | Done |
 | [#2](https://github.com/edgesentry/agent-control/issues/2) | Apache-2.0 OR MIT + `cargo-deny` | Done |
-| [#3](https://github.com/edgesentry/agent-control/issues/3) | OWASP catalog YAML | Open |
-| [#4](https://github.com/edgesentry/agent-control/issues/4) | `crates/guardian` | Open |
+| [#3](https://github.com/edgesentry/agent-control/issues/3) | OWASP catalog YAML | Done |
+| [#4](https://github.com/edgesentry/agent-control/issues/4) | `crates/guardian` | Done |
 | [#5](https://github.com/edgesentry/agent-control/issues/5) | `crates/trace` | Open |
 | [#6](https://github.com/edgesentry/agent-control/issues/6) | `policies/p0` | Open |
 | [#7](https://github.com/edgesentry/agent-control/issues/7) | `apps/lab` | Open |

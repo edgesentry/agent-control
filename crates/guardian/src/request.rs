@@ -74,8 +74,14 @@ fn parse_context(params: &Value) -> StepContext {
             .pointer("/agent/id")
             .and_then(|v| v.as_str())
             .map(str::to_string),
-        turn_id: ctx.pointer("/turnId").and_then(|v| v.as_str()).map(str::to_string),
-        step_id: ctx.pointer("/stepId").and_then(|v| v.as_str()).map(str::to_string),
+        turn_id: ctx
+            .pointer("/turnId")
+            .and_then(|v| v.as_str())
+            .map(str::to_string),
+        step_id: ctx
+            .pointer("/stepId")
+            .and_then(|v| v.as_str())
+            .map(str::to_string),
     }
 }
 
@@ -110,10 +116,7 @@ fn extract_searchable_text(hook: Hook, params: &Value) -> String {
             {
                 parts.push(q.to_string());
             }
-            collect_content_parts(
-                params.pointer("/knowledgeStep/results"),
-                &mut parts,
-            );
+            collect_content_parts(params.pointer("/knowledgeStep/results"), &mut parts);
         }
         Hook::MemoryStore => {
             if let Some(arr) = params.get("memory").and_then(|v| v.as_array()) {
