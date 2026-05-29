@@ -28,6 +28,9 @@ enum Command {
         /// Write JSON report to this path (default: stdout only).
         #[arg(long)]
         report: Option<PathBuf>,
+        /// Write OCSF JSON batch + sample deny event (env: `AGENT_CONTROL_TRACE_OUT`).
+        #[arg(long, env = "AGENT_CONTROL_TRACE_OUT")]
+        trace_out: Option<PathBuf>,
     },
 }
 
@@ -92,17 +95,30 @@ fn run_demo(g: Guardian) -> ExitCode {
     ExitCode::SUCCESS
 }
 
-fn run_smoke_cmd(g: Guardian, report_path: Option<PathBuf>) -> ExitCode {
+fn run_smoke_cmd(
+    g: Guardian,
+    report_path: Option<PathBuf>,
+    trace_out: Option<PathBuf>,
+) -> ExitCode {
     let agent = LabAgent::new(g);
     let out_path = report_path.clone();
-    match run_smoke(&agent, report_path.as_deref()) {
-        Ok(report) => {
-            if let Err(e) = print_smoke_summary(&report, std::io::stdout()) {
+    let trace_path = trace_out.clone();
+    match run_smoke(&agent, report_path.as_deref(), trace_out.as_deref()) {
+        Ok(output) => {
+            let report = &output.report;
+            if let Err(e) = print_smoke_summary(report, std::io::stdout()) {
                 eprintln!("Output error: {e}");
                 return ExitCode::from(1);
             }
             if let Some(path) = out_path {
                 println!("Report written to {}", path.display());
+            }
+            if let Some(dir) = trace_path {
+                println!(
+                    "OCSF export ({} events): {}/ocsf-events.json",
+                    output.ocsf_events.len(),
+                    dir.display()
+                );
             }
             if report.failed > 0 {
                 ExitCode::from(1)
@@ -126,6 +142,6 @@ fn main() -> ExitCode {
 
     match cli.command.unwrap_or(Command::Demo) {
         Command::Demo => run_demo(g),
-        Command::Smoke { report } => run_smoke_cmd(g, report),
+        Command::Smoke { report, trace_out } => run_smoke_cmd(g, report, trace_out),
     }
 }

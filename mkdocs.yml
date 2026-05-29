@@ -67,6 +67,7 @@ nav:
     - Security boundary: architecture/security-boundary.md
     - Repository layout: architecture/repo-layout.md
     - Guardian policy engine: architecture/guardian.md
+    - Trace / OCSF export: architecture/trace.md
     - ACS hook subset: architecture/acs-hooks.md
   - Operations:
     - On-prem deployment: operations/on-prem.md

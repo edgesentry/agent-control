@@ -4,7 +4,13 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "OpenTelemetry spans to OCSF export (scaffold)"
+description = "OpenTelemetry-style spans to OCSF JSON export for ACS Trace"
 
-[lib]
-path = "src/lib.rs"
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+guardian = { path = "../guardian" }

@@ -1,8 +1,63 @@
 {
-  "_comment": "Sample OCSF deny event — placeholder until crates/trace (issue #5)",
-  "activity_id": 0,
-  "category_uid": 0,
-  "class_uid": 0,
-  "severity_id": 0,
-  "status": "placeholder"
+  "activity_id": 1,
+  "activity_name": "Create",
+  "category_uid": 2,
+  "category_name": "Findings",
+  "class_uid": 2004,
+  "class_name": "Detection Finding",
+  "type_uid": 200401,
+  "type_name": "Detection Finding: Create",
+  "severity_id": 4,
+  "severity": "High",
+  "time": 1780070006984,
+  "metadata": {
+    "version": "1.1.0",
+    "uid": "span-000000000006",
+    "product": {
+      "name": "agent-control",
+      "vendor_name": "EdgeSentry",
+      "version": "0.1.0"
+    }
+  },
+  "finding_info": {
+    "uid": "finding-span-000000000006",
+    "title": "Guardian deny on toolCallRequest",
+    "desc": "Dangerous tool invocation blocked by Guardian (ASI05)",
+    "types": [
+      "AC-ASI05-exec"
+    ]
+  },
+  "observables": [
+    {
+      "name": "probe_id",
+      "type": "ACS Smoke Probe",
+      "value": "AC-ASI05-exec"
+    },
+    {
+      "name": "owasp_id",
+      "type": "OWASP Risk",
+      "value": "ASI05:2026"
+    }
+  ],
+  "unmapped": {
+    "acs": {
+      "agent_id": "lab-smoke",
+      "decision": "deny",
+      "matched_policy_ids": [
+        "p0-deny-shell-exec"
+      ],
+      "method": "steps/toolCallRequest",
+      "owasp_ids": [
+        "ASI05:2026"
+      ],
+      "probe_id": "AC-ASI05-exec",
+      "session_id": "smoke-session"
+    },
+    "otel": {
+      "duration_ms": 1,
+      "span_id": "span-000000000006",
+      "span_name": "guardian.toolCallRequest",
+      "trace_id": "trace-000000000001"
+    }
+  }
 }
