@@ -6,7 +6,7 @@
 **Planning date:** 2026-05-29 (updated: deployment & security boundary)  
 **Strategy pack (internal):** `edgesentry-commercial/docs/programs/20260630-capvista-cyber-resilience/analytics/`
 
-This section is the canonical programme plan (formerly root `PLAN.md`). Coding agents: enter via [AGENTS.md](../../AGENTS.md) → this index.
+This section is the canonical programme plan. Coding agents: enter via [AGENTS.md](../../AGENTS.md) → this index.
 
 ## Plan sections
 

@@ -22,7 +22,7 @@ Full Cap Vista plan: **[docs/plan/index.md](docs/plan/index.md)** · [Published]
 | Risks | [docs/plan/risks.md](docs/plan/risks.md) |
 | Success checklist (30 Jun) | [docs/plan/success-checklist.md](docs/plan/success-checklist.md) |
 
-Root [PLAN.md](PLAN.md) is a pointer only — **edit `docs/plan/*.md`**.
+Programme plan: **[docs/plan/index.md](docs/plan/index.md)** — edit `docs/plan/*.md` only.
 
 ## Scope — do not cross
 

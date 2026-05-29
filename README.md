@@ -13,7 +13,7 @@ Deploy on your own hardware first: no cloud is required to build or run the cont
 | **Everyone (overview)** | This README |
 | **Published detail** | **[https://edgesentry.github.io/agent-control/](https://edgesentry.github.io/agent-control/)** (MkDocs) |
 | **Coding agents** | [AGENTS.md](AGENTS.md) → [programme plan](docs/plan/index.md) |
-| **Programme plan** | [docs/plan/](docs/plan/index.md) (root `PLAN.md` is a pointer) |
+| **Programme plan** | [docs/plan/](docs/plan/index.md) |
 
 ## What it does
 

@@ -22,7 +22,7 @@ Submission deadline: **30 June 2026, 13:00 SGT**.
 | Topic | Page |
 |-------|------|
 | Clone, build, run | [Getting started](getting-started.md) |
-| Programme plan (was `PLAN.md`) | [Plan index](plan/index.md) |
+| Programme plan | [Plan index](plan/index.md) |
 | L1 / L2 / L3 boundaries | [Purpose](plan/purpose.md) · [Security boundary](architecture/security-boundary.md) |
 | Submission DoD | [Submission DoD](plan/submission-dod.md) |
 | **Progress (shipped / in review)** | [**Submission progress**](submission/progress.md) |

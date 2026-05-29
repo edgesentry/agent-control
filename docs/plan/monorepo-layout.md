@@ -4,7 +4,7 @@
 agent-control/
 ├── AGENTS.md                  # Agent-oriented overview
 ├── README.md                  # Human-oriented overview
-├── PLAN.md                    # Pointer to docs/plan/ (this content)
+├── docs/plan/                 # Programme plan (canonical)
 ├── mkdocs.yml
 ├── catalog/
 │   └── owasp-llm-asi.yaml     # LLM01–10 + ASI01–10 → hooks
