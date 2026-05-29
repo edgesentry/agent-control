@@ -85,10 +85,39 @@ impl SocAgent {
         tool_id: &str,
         inputs: &[(&str, &str)],
     ) -> Result<guardian::Verdict, SocError> {
+        self.tool_call_verdict_with_approval(tool_id, inputs, None)
+    }
+
+    /// `toolCallRequest` with optional analyst approval token in inputs.
+    pub fn tool_call_verdict_with_approval(
+        &self,
+        tool_id: &str,
+        inputs: &[(&str, &str)],
+        approval_token: Option<&str>,
+    ) -> Result<guardian::Verdict, SocError> {
+        let mut all_inputs: Vec<(&str, &str)> = inputs.to_vec();
+        if let Some(token) = approval_token {
+            all_inputs.push(("analyst_approval_token", token));
+        }
         self.evaluate_step(
             "steps/toolCallRequest",
-            self.tool_call_params(tool_id, inputs),
+            self.tool_call_params(tool_id, &all_inputs),
         )
+    }
+
+    /// `humanGate` — analyst approval before high-impact remediation.
+    pub fn human_gate_verdict(
+        &self,
+        tool_id: &str,
+        risk: &str,
+        approval_token: Option<&str>,
+    ) -> Result<guardian::Verdict, SocError> {
+        let params = json!({
+            "approval": { "token": approval_token.unwrap_or("") },
+            "action": { "risk": risk, "toolId": tool_id },
+            "context": self.context()
+        });
+        self.evaluate_step("instrument/humanGate", params)
     }
 
     /// `agentResponse` — triage summary returned to analyst.
@@ -139,5 +168,44 @@ mod tests {
             )
             .unwrap();
         assert_eq!(verdict.decision, Decision::Allow);
+    }
+
+    #[test]
+    fn allows_destructive_tool_with_approval_token() {
+        use crate::config::DEFAULT_APPROVAL_TOKEN;
+
+        let agent = soc_agent();
+        let verdict = agent
+            .tool_call_verdict_with_approval(
+                "isolate_host",
+                &[("host", "ws-finance-17")],
+                Some(DEFAULT_APPROVAL_TOKEN),
+            )
+            .unwrap();
+        assert_eq!(verdict.decision, Decision::Allow);
+    }
+
+    #[test]
+    fn human_gate_denies_without_token() {
+        let agent = soc_agent();
+        let verdict = agent
+            .human_gate_verdict("isolate_host", "destructive", None)
+            .unwrap();
+        assert_eq!(verdict.decision, Decision::Deny);
+        assert!(verdict.reason_codes.contains(&"AC-ASI09-gate".to_string()));
+    }
+
+    #[test]
+    fn human_gate_allows_with_token() {
+        use crate::config::DEFAULT_APPROVAL_TOKEN;
+
+        let agent = soc_agent();
+        let verdict = agent
+            .human_gate_verdict("isolate_host", "destructive", Some(DEFAULT_APPROVAL_TOKEN))
+            .unwrap();
+        assert_eq!(verdict.decision, Decision::Allow);
+        assert!(verdict
+            .reason_codes
+            .contains(&"AC-ASI09-gate-allow".to_string()));
     }
 }

@@ -46,14 +46,15 @@ On-prem and air-gapped steps: [docs — Getting started](https://edgesentry.gith
 | OWASP catalog + Guardian + policies | ✓ Shipped | #3–#4, #6 · [#29](https://github.com/edgesentry/agent-control/pull/29)–[#30](https://github.com/edgesentry/agent-control/pull/30) |
 | `apps/lab` + smoke 10/10 | ✓ Shipped | #7–#8 · [#31](https://github.com/edgesentry/agent-control/pull/31) |
 | Trace → OCSF export | ✓ Shipped | [#5](https://github.com/edgesentry/agent-control/issues/5) · [#32](https://github.com/edgesentry/agent-control/pull/32) |
-| SOC triage playbook | **In review** | [#9](https://github.com/edgesentry/agent-control/issues/9) |
-| Analyst gate | Planned | [#10](https://github.com/edgesentry/agent-control/issues/10) |
+| SOC triage + analyst gate | **In review** | [#9](https://github.com/edgesentry/agent-control/issues/9) · [#10](https://github.com/edgesentry/agent-control/issues/10) |
 
 ```bash
 cargo run -p lab -- smoke --trace-out examples
 make smoke
 cargo run -p soc -- triage --trace-out examples
+cargo run -p soc -- gate
 make soc-triage
+make soc-gate
 ```
 
 Detail: [submission progress](docs/submission/progress.md) · [issue roadmap](https://edgesentry.github.io/agent-control/submission/roadmap/).

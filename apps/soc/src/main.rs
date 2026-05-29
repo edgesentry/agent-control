@@ -1,6 +1,8 @@
 //! CS01 Governed SOC Agent — OOTB alert-triage Observed Agent.
 
 mod agent;
+mod config;
+mod gate;
 mod triage;
 
 use std::env;
@@ -9,6 +11,8 @@ use std::process::ExitCode;
 
 use agent::SocAgent;
 use clap::{Parser, Subcommand};
+use config::DEFAULT_APPROVAL_TOKEN;
+use gate::{print_gate_summary, run_gate_demo};
 use guardian::Guardian;
 use triage::{load_alert, print_triage_summary, run_triage};
 
@@ -35,6 +39,15 @@ enum Command {
         /// Write OCSF JSON batch (env: `AGENT_CONTROL_TRACE_OUT`).
         #[arg(long, env = "AGENT_CONTROL_TRACE_OUT")]
         trace_out: Option<PathBuf>,
+    },
+    /// Analyst approval gate demo: deny without token, allow with token.
+    Gate {
+        /// Host target for destructive remediation demo.
+        #[arg(long, default_value = "ws-finance-17")]
+        host: String,
+        /// Analyst approval token (env: `AGENT_CONTROL_APPROVAL_TOKEN`).
+        #[arg(long, env = "AGENT_CONTROL_APPROVAL_TOKEN", default_value = DEFAULT_APPROVAL_TOKEN)]
+        approval_token: String,
     },
 }
 
@@ -108,6 +121,35 @@ fn run_triage_cmd(
     }
 }
 
+fn run_gate_cmd(g: Guardian, host: String, approval_token: String) -> ExitCode {
+    println!(
+        "agent-control soc v{} (guardian {}, trace {})",
+        env!("CARGO_PKG_VERSION"),
+        guardian::VERSION,
+        trace::VERSION,
+    );
+    println!(
+        "Loaded {} policy rule(s) from {}",
+        g.policies().rules().len(),
+        policy_dir().display()
+    );
+
+    let agent = SocAgent::new(g);
+    match run_gate_demo(&agent, &host, &approval_token) {
+        Ok(report) => {
+            if let Err(e) = print_gate_summary(&report, std::io::stdout()) {
+                eprintln!("Output error: {e}");
+                return ExitCode::from(1);
+            }
+            ExitCode::SUCCESS
+        }
+        Err(e) => {
+            eprintln!("Gate demo failed: {e}");
+            ExitCode::from(1)
+        }
+    }
+}
+
 fn main() -> ExitCode {
     let cli = Cli::parse();
     let g = match load_guardian() {
@@ -125,5 +167,9 @@ fn main() -> ExitCode {
             report,
             trace_out,
         } => run_triage_cmd(g, alert, report, trace_out),
+        Command::Gate {
+            host,
+            approval_token,
+        } => run_gate_cmd(g, host, approval_token),
     }
 }

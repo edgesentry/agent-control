@@ -242,3 +242,26 @@ rules: []
     let file: PolicyFile = serde_yaml::from_str(yaml).unwrap();
     assert_eq!(file.version, "1");
 }
+
+#[test]
+fn unless_content_skips_deny_when_token_present() {
+    let g = Guardian::new(PolicySet::from_rules(vec![PolicyRule {
+        id: "deny-unless-token".to_string(),
+        hooks: vec!["toolCallRequest".to_string()],
+        owasp: vec![],
+        r#match: crate::policy::MatchExpr {
+            tool_id_contains: vec!["isolate".into()],
+            unless_content_contains: vec!["analyst-token".into()],
+            ..Default::default()
+        },
+        decision: Decision::Deny,
+        message: "blocked".to_string(),
+        reason_codes: vec![],
+        modify: None,
+    }]));
+    let mut params = tool_call_params("isolate_host");
+    params["toolCallRequest"]["inputs"] =
+        json!([{ "name": "analyst_approval_token", "value": "analyst-token" }]);
+    let req = HookRequest::from_jsonrpc("steps/toolCallRequest", params).unwrap();
+    assert_eq!(g.evaluate(&req).decision, Decision::Allow);
+}

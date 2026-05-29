@@ -1,4 +1,6 @@
 # CS01 — block autonomous destructive SOC remediation on toolCallRequest
+# Configurable destructive tool names via tool_id_contains (submission default list below).
+# Pass analyst token in tool inputs to bypass after humanGate approval.
 version: "1"
 rules:
   - id: soc-deny-destructive-remediation
@@ -14,6 +16,7 @@ rules:
         - kill_process
         - shutdown_host
         - revoke_sessions
+      unless_content_contains: [soc-analyst-demo-token]
     decision: deny
     message: Autonomous destructive remediation blocked — analyst gate required (CS01)
     reason_codes: [AC-SOC01-remediation-gate]

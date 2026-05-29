@@ -11,7 +11,7 @@
 - [x] `apps/lab`: smoke suite 10/10 green ([#31](https://github.com/edgesentry/agent-control/pull/31))
 - [x] `examples/ocsf-*.json` committed (#5)
 - [x] OWASP coverage matrix — probe + OCSF columns
-- [x] `apps/soc`: triage playbook (#9 — analyst gate in #10)
+- [x] `apps/soc`: triage playbook (#9) + analyst gate (#10)
 - [ ] Demo script + recorded video
 - [ ] Tag `v0.1.0-submission`
 

@@ -147,6 +147,7 @@ fn extract_searchable_text(hook: Hook, params: &Value) -> String {
         Hook::HumanGate => {
             push_string_field(params, "/approval/token", &mut parts);
             push_string_field(params, "/action/risk", &mut parts);
+            push_string_field(params, "/action/toolId", &mut parts);
         }
     }
     parts.join("\n")
