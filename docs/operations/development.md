@@ -31,7 +31,7 @@ Prefix pattern: `AC-{LLM|ASI}{nn}-{slug}` — mapped from `catalog/owasp-llm-asi
 |-------------|-----------------|
 | User-facing behaviour | `docs/` (this site) |
 | Agent quick reference | `AGENTS.md` |
-| Programme milestones | `PLAN.md` |
+| Programme milestones | `docs/plan/` |
 | One-line human intro | `README.md` |
 
 Build the docs site:
