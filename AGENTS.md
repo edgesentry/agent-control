@@ -80,7 +80,7 @@ Before finishing a change: workspace build + tests green; clippy clean; no secre
 | 1 | Scaffold ✓ |
 | 2 | License + `cargo-deny` ✓ |
 | 3 | `catalog/owasp-llm-asi.yaml` |
-| 4 | `crates/guardian` |
+| 4 | `crates/guardian` ✓ |
 | 5 | `crates/trace` |
 | 6 | `policies/p0` |
 | 7–8 | `apps/lab` + P0 smoke 10/10 |
@@ -109,7 +109,7 @@ When adding behaviour docs, prefer `docs/` — keep README and AGENTS.md short.
 | `knowledgeRetrieval`, `memoryStore` | ✓ | — |
 | `toolCallResult`, `userMessage` | — | ✓ (issue #20) |
 
-Full table: [docs/architecture/acs-hooks.md](docs/architecture/acs-hooks.md). A2A / MCP — stub + doc only before 30 Jun.
+Full table: [docs/architecture/acs-hooks.md](docs/architecture/acs-hooks.md). Policy engine: [docs/architecture/guardian.md](docs/architecture/guardian.md). A2A / MCP — stub + doc only before 30 Jun.
 
 ## References
 

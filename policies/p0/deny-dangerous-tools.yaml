@@ -1,0 +1,31 @@
+# P0 smoke-tier policy — ASI05 shell / exec on toolCallRequest
+version: "1"
+rules:
+  - id: p0-deny-shell-exec
+    hooks: [toolCallRequest]
+    owasp: [ASI05]
+    match:
+      tool_id_contains: [shell, exec, bash, sh, subprocess]
+    decision: deny
+    message: Dangerous tool invocation blocked by Guardian (ASI05)
+    reason_codes: [AC-ASI05-exec]
+
+  - id: p0-deny-memory-poison
+    hooks: [memoryStore]
+    owasp: [ASI06]
+    match:
+      content_contains: ["ignore previous", "system override"]
+    decision: deny
+    message: Poisoned memory write blocked (ASI06)
+    reason_codes: [AC-ASI06-poison]
+
+  - id: p0-redact-secrets-response
+    hooks: [agentResponse]
+    owasp: [LLM02]
+    match:
+      content_contains: [api_key, secret, password, bearer]
+    decision: modify
+    message: Sensitive content redacted in agent response (LLM02)
+    reason_codes: [AC-LLM02-redact]
+    modify:
+      set_content: "[REDACTED BY GUARDIAN]"
