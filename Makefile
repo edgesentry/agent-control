@@ -1,4 +1,4 @@
-.PHONY: build test fmt clippy check docs-build docs-serve md-lint
+.PHONY: build test fmt clippy deny check docs-build docs-serve md-lint
 
 build:
 	cargo build --workspace
@@ -12,9 +12,12 @@ fmt:
 clippy:
 	cargo clippy --workspace --all-targets -- -D warnings
 
+deny:
+	cargo deny check licenses
+
 check:
 	cargo fmt --all -- --check
-	$(MAKE) build test clippy
+	$(MAKE) build test clippy deny
 
 docs-build:
 	mkdocs build --strict

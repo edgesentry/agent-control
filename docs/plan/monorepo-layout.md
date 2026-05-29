@@ -27,8 +27,10 @@ agent-control/
 │   └── submission/
 ├── LICENSE-APACHE
 ├── LICENSE-MIT
-├── deny.toml                  # cargo-deny: license allow-list
-├── THIRD_PARTY.md             # Major OSS deps + licenses
+├── deny.toml                  # cargo-deny: license allow-list (CI gate)
+├── THIRD_PARTY.md             # Third-party crate licenses
+├── LICENSE-APACHE
+├── LICENSE-MIT
 └── deploy/
     └── on-prem/               # Compose / systemd bundle for air-gap trial
 ```

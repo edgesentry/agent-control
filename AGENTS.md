@@ -58,15 +58,16 @@ cargo build --workspace
 cargo test --workspace
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets -- -D warnings
+cargo deny check licenses
 ```
 
-CI: `.github/workflows/ci.yml`. Docs: `mkdocs build --strict` (see `requirements-docs.txt`).
+CI: `.github/workflows/ci.yml` (includes **license_check**). Docs: `mkdocs build --strict` (see `requirements-docs.txt`).
 
 Before finishing a change: workspace build + tests green; clippy clean; no secrets in tree.
 
 ## Conventions
 
-- Rust **2021**, workspace `MIT OR Apache-2.0` (license files: issue #2)
+- Rust **2021**, workspace `MIT OR Apache-2.0` — [LICENSE-APACHE](LICENSE-APACHE), [LICENSE-MIT](LICENSE-MIT), [deny.toml](deny.toml)
 - Match existing crate style; minimal diff; no drive-by refactors
 - Policies on **ACS hooks**, not raw prompt strings
 - `thiserror` in libraries; avoid `unwrap`/`expect` in library paths
@@ -77,7 +78,7 @@ Before finishing a change: workspace build + tests green; clippy clean; no secre
 | # | Deliverable |
 |---|-------------|
 | 1 | Scaffold ✓ |
-| 2 | License + `cargo-deny` |
+| 2 | License + `cargo-deny` ✓ |
 | 3 | `catalog/owasp-llm-asi.yaml` |
 | 4 | `crates/guardian` |
 | 5 | `crates/trace` |
