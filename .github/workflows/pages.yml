@@ -9,6 +9,9 @@ on:
       - "AGENTS.md"
       - "mkdocs.yml"
       - "requirements-docs.txt"
+      - "deny.toml"
+      - "THIRD_PARTY.md"
+      - "LICENSE-*"
       - "README.md"
       - "AGENTS.md"
   workflow_dispatch:

@@ -3,8 +3,8 @@
 ## Repo (`agent-control`)
 
 - [ ] Public README with ACS disclaimer, **L1/L2 boundary**, OSS stack table, and on-prem quickstart
-- [ ] `LICENSE-APACHE`, `LICENSE-MIT`, and `THIRD_PARTY` (or `deny.toml`) committed
-- [ ] `cargo deny check licenses` passing in CI
+- [x] `LICENSE-APACHE`, `LICENSE-MIT`, and `THIRD_PARTY` (or `deny.toml`) committed
+- [x] `cargo deny check licenses` passing in CI
 - [ ] `catalog/owasp-llm-asi.yaml` complete
 - [ ] Guardian: ≥3 hooks, YAML policies
 - [ ] `apps/lab`: smoke suite 10/10 green

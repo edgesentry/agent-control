@@ -52,6 +52,12 @@ make md-lint
 # or: npx --yes markdownlint-cli2
 ```
 
-## Dependency policy (issue #2)
+## Dependency policy
 
-Planned CI gate: `cargo deny check licenses` with Apache-2.0, MIT, BSD, ISC allow-list; **exclude GPL/AGPL** from default build.
+`cargo deny check licenses` runs in CI. Allow-list: Apache-2.0, MIT, BSD, ISC, Unicode-3.0, and related permissive licenses — see [deny.toml](../../deny.toml). **GPL / AGPL / LGPL / MPL** are denied for default builds.
+
+```bash
+make deny
+```
+
+Third-party inventory: [THIRD_PARTY.md](../../THIRD_PARTY.md).

@@ -41,7 +41,11 @@ Early scaffold — see [programme plan](https://edgesentry.github.io/agent-contr
 
 ## License
 
-**Apache-2.0 OR MIT** (recipient chooses either). License files and dependency policy: issue [#2](https://github.com/edgesentry/agent-control/issues/2).
+**Apache-2.0 OR MIT** (recipient chooses either):
+
+- [LICENSE-APACHE](LICENSE-APACHE)
+- [LICENSE-MIT](LICENSE-MIT)
+- Dependency policy: [deny.toml](deny.toml) · [THIRD_PARTY.md](THIRD_PARTY.md) · CI `cargo deny check licenses`
 
 ## Links
 
