@@ -1,0 +1,29 @@
+# Issue roadmap
+
+GitHub issues track the Cap Vista **submission MVP**. Week-by-week plan: [Schedule](../plan/schedule.md). Definition of done: [Submission DoD](../plan/submission-dod.md).
+
+## P0 — must ship in repo
+
+| Issue | Deliverable | Status |
+|-------|-------------|--------|
+| [#1](https://github.com/edgesentry/agent-control/issues/1) | Monorepo scaffold | Done |
+| [#2](https://github.com/edgesentry/agent-control/issues/2) | Apache-2.0 OR MIT + `cargo-deny` | Open |
+| [#3](https://github.com/edgesentry/agent-control/issues/3) | OWASP catalog YAML | Open |
+| [#4](https://github.com/edgesentry/agent-control/issues/4) | `crates/guardian` | Open |
+| [#5](https://github.com/edgesentry/agent-control/issues/5) | `crates/trace` | Open |
+| [#6](https://github.com/edgesentry/agent-control/issues/6) | `policies/p0` | Open |
+| [#7](https://github.com/edgesentry/agent-control/issues/7) | `apps/lab` | Open |
+| [#8](https://github.com/edgesentry/agent-control/issues/8) | P0 smoke 10/10 | Open |
+| [#9](https://github.com/edgesentry/agent-control/issues/9) | `apps/soc` | Open |
+| [#10](https://github.com/edgesentry/agent-control/issues/10) | Analyst approval gate | Open |
+| [#11](https://github.com/edgesentry/agent-control/issues/11) | OWASP coverage matrix doc | Open |
+| [#12](https://github.com/edgesentry/agent-control/issues/12) | Security boundary doc | Open |
+| [#13](https://github.com/edgesentry/agent-control/issues/13) | ACS alignment doc | Open |
+| [#14](https://github.com/edgesentry/agent-control/issues/14) | Demo script | Open |
+| [#15](https://github.com/edgesentry/agent-control/issues/15) | Tag `v0.1.0-submission` | Open |
+
+**Feature freeze:** 28 Jun 2026.
+
+## Portal pack (other repo)
+
+CoC annex and portal upload: **`edgesentry-commercial`** (issues #174–178).
