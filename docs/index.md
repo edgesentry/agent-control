@@ -26,6 +26,7 @@ Submission deadline: **30 June 2026, 13:00 SGT**.
 | L1 / L2 / L3 boundaries | [Purpose](plan/purpose.md) · [Security boundary](architecture/security-boundary.md) |
 | Submission DoD | [Submission DoD](plan/submission-dod.md) |
 | **Progress (shipped / in review)** | [**Submission progress**](submission/progress.md) |
+| **CoC annex (portal)** | [edgesentry-commercial submission](https://github.com/edgesentry/edgesentry-commercial/tree/main/docs/programs/20260630-capvista-cyber-resilience/submission) |
 | P0 smoke suite | [P0 smoke suite](plan/p0-smoke-suite.md) |
 | W1–W5 schedule | [Schedule](plan/schedule.md) |
 | On-prem / air-gap | [On-prem deployment](operations/on-prem.md) |

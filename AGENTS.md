@@ -93,7 +93,9 @@ Before finishing a change: workspace build + tests green; clippy clean; no secre
 | 8 | P0 smoke 10/10 ✓ |
 | 9 | `apps/soc` ✓ |
 | 10 | Analyst approval gate ✓ |
-| 11–15 | Coverage matrix, docs, demo, tag `v0.1.0-submission` |
+| 11–15 | Submission annex (commercial), demo, tag `v0.1.0-submission` |
+
+**Submission annex (CoC):** [edgesentry-commercial/submission](https://github.com/edgesentry/edgesentry-commercial/tree/main/docs/programs/20260630-capvista-cyber-resilience/submission) — not duplicated in this repo.
 
 Tracker: [docs/submission/roadmap.md](docs/submission/roadmap.md). Do not expand into full SOC platform, cloud-only SaaS, or L1 audit chain.
 
@@ -105,6 +107,8 @@ Tracker: [docs/submission/roadmap.md](docs/submission/roadmap.md). Do not expand
 | Agents (this file) | `AGENTS.md` |
 | Programme plan | `docs/plan/` |
 | Architecture & operations | `docs/architecture/`, `docs/operations/` |
+| **CoC annex / portal copy** | **edgesentry-commercial** `docs/programs/20260630-capvista-cyber-resilience/submission/` |
+| Engineering progress | `docs/submission/progress.md` |
 | Published site | GitHub Pages via `mkdocs.yml` |
 
 When adding behaviour docs, prefer `docs/` — keep README and AGENTS.md short.

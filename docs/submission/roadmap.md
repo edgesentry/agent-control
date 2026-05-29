@@ -16,10 +16,10 @@ GitHub issues track the Cap Vista **submission MVP**. Week-by-week plan: [Schedu
 | [#8](https://github.com/edgesentry/agent-control/issues/8) | P0 smoke 10/10 | Done (probes + OCSF via #5) |
 | [#9](https://github.com/edgesentry/agent-control/issues/9) | `apps/soc` | Done ([#34](https://github.com/edgesentry/agent-control/pull/34)) |
 | [#10](https://github.com/edgesentry/agent-control/issues/10) | Analyst approval gate | In review |
-| [#11](https://github.com/edgesentry/agent-control/issues/11) | OWASP coverage matrix doc | Draft |
-| [#12](https://github.com/edgesentry/agent-control/issues/12) | Security boundary doc | Open |
-| [#13](https://github.com/edgesentry/agent-control/issues/13) | ACS alignment doc | Open |
-| [#14](https://github.com/edgesentry/agent-control/issues/14) | Demo script | Open |
+| [#11](https://github.com/edgesentry/agent-control/issues/11) | OWASP coverage matrix doc | Commercial [submission/11](https://github.com/edgesentry/edgesentry-commercial/tree/main/docs/programs/20260630-capvista-cyber-resilience/submission) |
+| [#12](https://github.com/edgesentry/agent-control/issues/12) | Security boundary doc | Commercial [submission/12](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/12-security-boundary.md) |
+| [#13](https://github.com/edgesentry/agent-control/issues/13) | ACS alignment doc | Commercial [submission/13](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/13-acs-alignment.md) |
+| [#14](https://github.com/edgesentry/agent-control/issues/14) | Demo script | Commercial [submission/14](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/14-demo-script.md) |
 | [#15](https://github.com/edgesentry/agent-control/issues/15) | Tag `v0.1.0-submission` | Open |
 
 **Feature freeze:** 28 Jun 2026.

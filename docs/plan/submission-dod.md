@@ -26,11 +26,14 @@ Tracked on GitHub: [issue roadmap](../submission/roadmap.md).
 
 | Deliverable | Location |
 |-------------|----------|
-| CoC annex proposal (PDF) | Cap Vista portal |
-| Metrics table aligned to challenge KPIs | CoC annex |
-| Phase 1 trial design + **resources required from Organisers** | CoC annex |
-| OWASP coverage annex (copy from coverage matrix doc) | CoC annex appendix |
-| Link to this repo + demo video | CoC annex |
+| CoC annex proposal (PDF) | Cap Vista portal — draft from [submission pack](https://github.com/edgesentry/edgesentry-commercial/tree/main/docs/programs/20260630-capvista-cyber-resilience/submission) |
+| OWASP coverage annex | [11-owasp-coverage-matrix.md](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/11-owasp-coverage-matrix.md) |
+| Security boundary | [12-security-boundary.md](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/12-security-boundary.md) |
+| ACS alignment | [13-acs-alignment.md](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/13-acs-alignment.md) |
+| Demo script | [14-demo-script.md](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/14-demo-script.md) |
+| Phase 1 trial + Organiser asks | [15-phase1-trial.md](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/15-phase1-trial.md) |
+| Metrics table aligned to challenge KPIs | CoC annex ([#175](https://github.com/edgesentry/edgesentry-commercial/issues/175)) |
+| Link to agent-control + demo video | CoC annex |
 
 ## Explicit non-goals before 30 Jun
 
