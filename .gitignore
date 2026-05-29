@@ -1,4 +1,5 @@
 /target/
+/site/
 **/*.rs.bk
 *.pdb
 .DS_Store

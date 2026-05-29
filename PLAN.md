@@ -459,4 +459,4 @@ When OWASP or ACS specifies behaviour, **follow the standard**. When silent, **d
 
 ---
 
-*Internal owner: EdgeSentry · Programme: Cap Vista Cyber Resilience · Submission: 30 Jun 2026*
+Internal owner: EdgeSentry · Programme: Cap Vista Cyber Resilience · Submission: 30 Jun 2026

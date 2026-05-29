@@ -2,6 +2,8 @@
 
 Edge and on-prem deployment is the **primary** shape for Cap Vista trials: Guardian + Observed Agents run on evaluator hardware without a cloud control plane.
 
+**Full guide:** [On-prem deployment](https://edgesentry.github.io/agent-control/operations/on-prem/) (MkDocs).
+
 ## Quickstart (bare metal / VM)
 
 From the repository root on your target host:
