@@ -1,10 +1,13 @@
-.PHONY: build test fmt clippy deny check docs-build docs-serve md-lint
+.PHONY: build test fmt clippy deny check docs-build docs-serve md-lint smoke
 
 build:
 	cargo build --workspace
 
 test:
 	cargo test --workspace
+
+smoke:
+	cargo run -p lab -- smoke --report examples/smoke-report.json
 
 fmt:
 	cargo fmt --all

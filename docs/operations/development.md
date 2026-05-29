@@ -7,7 +7,8 @@ cargo build --workspace
 cargo test --workspace
 cargo fmt --all
 cargo clippy --workspace --all-targets -- -D warnings
-make check
+make check   # fmt --check, build, test, clippy, deny
+make smoke   # P0 OWASP probes → examples/smoke-report.json
 ```
 
 ## Conventions

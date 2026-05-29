@@ -1,50 +1,59 @@
 # Submission progress
 
-Living snapshot of what is **merged or in review** on [`main`](https://github.com/edgesentry/agent-control). Full issue tracker: [roadmap](roadmap.md).
+Living snapshot of **`main`** plus open PRs. Tracker: [roadmap](roadmap.md).
 
-**Last updated:** 29 May 2026 (includes [PR #30](https://github.com/edgesentry/agent-control/pull/30) — policies/p0, open).
+**Last updated:** 29 May 2026 (includes [PR #31](https://github.com/edgesentry/agent-control/pull/31) — apps/lab + smoke CLI, in review).
 
-## Shipped
+## Programme snapshot
 
-| Issue | PR | Deliverable | Notes |
-|-------|-----|-------------|-------|
-| [#1](https://github.com/edgesentry/agent-control/issues/1) | — | Monorepo scaffold | Rust workspace, CI, Makefile, on-prem pointer |
-| [#2](https://github.com/edgesentry/agent-control/issues/2) | [#27](https://github.com/edgesentry/agent-control/pull/27) | Dual license + `cargo-deny` | Apache-2.0 OR MIT, `THIRD_PARTY.md` |
-| — | [#26](https://github.com/edgesentry/agent-control/pull/26) | Docs site | `AGENTS.md`, MkDocs, GitHub Pages, markdownlint |
-| [#3](https://github.com/edgesentry/agent-control/issues/3) | [#29](https://github.com/edgesentry/agent-control/pull/29) | OWASP catalog | `catalog/owasp-llm-asi.yaml` — LLM01–10 + ASI01–10; `crates/catalog` validates at test time |
-| [#4](https://github.com/edgesentry/agent-control/issues/4) | [#28](https://github.com/edgesentry/agent-control/pull/28) | Guardian engine | `allow` / `deny` / `modify` on 5 core ACS hooks; YAML policy loader; 8+ unit tests |
+| Layer | Status | Issues / PRs |
+|-------|--------|--------------|
+| **L2** — catalog, Guardian, policies | ✓ Complete | #1–#4, #6 · [#27](https://github.com/edgesentry/agent-control/pull/27)–[#30](https://github.com/edgesentry/agent-control/pull/30) |
+| **L3** — lab harness, smoke IDs | **In review** | [#7](https://github.com/edgesentry/agent-control/issues/7) · [**#31**](https://github.com/edgesentry/agent-control/pull/31) |
+| **L3** — trace/OCSF evidence | Not started | [#5](https://github.com/edgesentry/agent-control/issues/5) |
+| **CS01** — SOC + analyst gate | Not started | [#9](https://github.com/edgesentry/agent-control/issues/9)–[#10](https://github.com/edgesentry/agent-control/issues/10) |
+
+## Shipped (merged to `main`)
+
+| Issue | PR | Deliverable |
+|-------|-----|-------------|
+| [#1](https://github.com/edgesentry/agent-control/issues/1) | — | Monorepo scaffold, CI, Makefile |
+| [#2](https://github.com/edgesentry/agent-control/issues/2) | [#27](https://github.com/edgesentry/agent-control/pull/27) | Dual license + `cargo-deny` |
+| — | [#26](https://github.com/edgesentry/agent-control/pull/26) | MkDocs site, `AGENTS.md`, markdownlint |
+| [#3](https://github.com/edgesentry/agent-control/issues/3) | [#29](https://github.com/edgesentry/agent-control/pull/29) | `catalog/owasp-llm-asi.yaml` + `crates/catalog` |
+| [#4](https://github.com/edgesentry/agent-control/issues/4) | [#28](https://github.com/edgesentry/agent-control/pull/28) | `crates/guardian` policy engine |
+| [#6](https://github.com/edgesentry/agent-control/issues/6) | [#30](https://github.com/edgesentry/agent-control/pull/30) | `policies/p0` — 7 YAML files, 14 OWASP-tagged rules |
 
 ## In review
 
-| Issue | PR | Deliverable | Highlights |
-|-------|-----|-------------|------------|
-| [#6](https://github.com/edgesentry/agent-control/issues/6) | [**#30**](https://github.com/edgesentry/agent-control/pull/30) | **`policies/p0` OWASP pack** | 7 YAML files, 14 rules; every P0 smoke OWASP id + ASI01–10 tagged; hooks extended for `agbom`, `a2a`, `trace`, `humanGate`; catalog coverage tests in `crates/guardian` |
+| Issue | PR | Deliverable |
+|-------|-----|-------------|
+| [#7](https://github.com/edgesentry/agent-control/issues/7) | [**#31**](https://github.com/edgesentry/agent-control/pull/31) | **`apps/lab`** — CI/CD Observed Agent + P0 smoke CLI |
 
-### PR #30 — policy pack detail
+### PR #31 — lab + smoke detail
 
-| File | OWASP ids | Hook(s) |
-|------|-----------|---------|
-| `deny-dangerous-tools.yaml` | ASI05, ASI06, LLM02 | `toolCallRequest`, `memoryStore`, `agentResponse` |
-| `deny-rag-injection.yaml` | LLM01, ASI01 | `knowledgeRetrieval` |
-| `deny-tool-misuse.yaml` | LLM06, ASI02, ASI03, ASI04 | `toolCallRequest`, `agentTrigger` |
-| `deny-agbom.yaml` | ASI04 | `agbom` |
-| `deny-runaway.yaml` | LLM10, ASI10 | `agentTrigger`, `toolCallRequest` |
-| `deny-inter-agent.yaml` | ASI07, ASI08 | `a2a`, `agentTrigger`, `trace` |
-| `gate-human-trust.yaml` | ASI09 | `agentResponse`, `humanGate` |
+| Item | Detail |
+|------|--------|
+| **`LabAgent`** | `invoke_tool` intercepts `toolCallRequest` via Guardian (shell blocked, benign tools allowed) |
+| **CLI** | `cargo run -p lab` (demo) · `cargo run -p lab -- smoke` · `make smoke` |
+| **P0 probes** | 10 categories — LLM01/ASI01, LLM02, LLM06/ASI02, ASI04–10, LLM10/ASI10 |
+| **Report** | JSON to stdout or `--report` (sample: [`examples/smoke-report.json`](../../examples/smoke-report.json)) |
+| **Tests** | 3 in `apps/lab` — agent intercept + `p0_smoke_ten_of_ten` |
+| **CI** | `cargo run -p lab -- smoke` in [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) |
 
-Index: [`policies/p0/README.md`](../../policies/p0/README.md). Traceability: [OWASP coverage matrix](owasp-coverage.md).
+### #8 partial (same PR)
+
+Probe automation **10/10 green** in local tests, CLI, and CI. Remaining #8 DoD: **OCSF event** per probe (blocked on [#5](https://github.com/edgesentry/agent-control/issues/5) `crates/trace`).
 
 ## Next (critical path)
 
-| Issue | Deliverable | Depends on |
-|-------|-------------|------------|
-| [#7](https://github.com/edgesentry/agent-control/issues/7) | `apps/lab` smoke CLI | #6 merged |
-| [#8](https://github.com/edgesentry/agent-control/issues/8) | P0 smoke 10/10 automated | #7 |
-| [#5](https://github.com/edgesentry/agent-control/issues/5) | `crates/trace` → OCSF export | parallel (W3) |
-| [#9–10](https://github.com/edgesentry/agent-control/issues/9) | SOC app + analyst gate | after lab smoke |
+| Priority | Issue | Deliverable |
+|----------|-------|-------------|
+| 1 | [#5](https://github.com/edgesentry/agent-control/issues/5) | `crates/trace` → OCSF export; close #8 traceability |
+| 2 | [#9–10](https://github.com/edgesentry/agent-control/issues/9) | `apps/soc` + analyst approval gate |
+| 3 | [#11–14](https://github.com/edgesentry/agent-control/issues/11) | Coverage annex, demo script, video |
+| 4 | [#15](https://github.com/edgesentry/agent-control/issues/15) | Tag `v0.1.0-submission` |
 
-## Not started (P0)
+W2 exit (schedule): half smoke suite green — **achieved early** via #31; W3 target is trace + SOC skeleton.
 
-Trace export (#5), lab/soc apps (#7–10), filled coverage annex (#11), demo video (#14), tag `v0.1.0-submission` (#15).
-
-See [success checklist](../plan/success-checklist.md) and [submission DoD](../plan/submission-dod.md).
+See [success checklist](../plan/success-checklist.md) · [P0 smoke suite](../plan/p0-smoke-suite.md).
