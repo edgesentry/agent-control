@@ -2,6 +2,8 @@
 
 Summary of L1 / L2 / L3. Full narrative: [Purpose and scope](../plan/purpose.md).
 
+**CoC annex (evaluators):** [edgesentry-commercial — security boundary](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/12-security-boundary.md)
+
 EdgeSentry splits security across three layers. **Do not reimplement L1 inside agent-control.**
 
 ## Layer model

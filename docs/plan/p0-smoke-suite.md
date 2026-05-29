@@ -17,4 +17,4 @@ Minimum automated coverage for submission demo and CoC annex. Full mapping: `edg
 
 **Submission metric (proposed for CoC):** P0 smoke **10/10 categories** automated with pass/fail + JSON report; latency target **<15 min** wall-clock on **on-prem lab hardware** (RPi5-class or evaluator VM, no cloud dependency).
 
-Coverage matrix (traceability): [OWASP coverage matrix](../submission/owasp-coverage.md).
+Coverage matrix (traceability): [commercial submission — OWASP coverage](https://github.com/edgesentry/edgesentry-commercial/blob/main/docs/programs/20260630-capvista-cyber-resilience/submission/11-owasp-coverage-matrix.md).

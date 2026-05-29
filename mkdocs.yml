@@ -73,8 +73,6 @@ nav:
     - On-prem deployment: operations/on-prem.md
     - Development: operations/development.md
   - Submission artefacts:
+    - Submission index: submission/README.md
     - Issue roadmap: submission/roadmap.md
     - Submission progress: submission/progress.md
-    - OWASP coverage matrix: submission/owasp-coverage.md
-    - Demo script: submission/demo.md
-    - ACS alignment: submission/acs-alignment.md
