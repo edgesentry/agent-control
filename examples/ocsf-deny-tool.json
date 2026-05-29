@@ -1,0 +1,8 @@
+{
+  "_comment": "Sample OCSF deny event — placeholder until crates/trace (issue #5)",
+  "activity_id": 0,
+  "category_uid": 0,
+  "class_uid": 0,
+  "severity_id": 0,
+  "status": "placeholder"
+}

@@ -1,0 +1,5 @@
+# OWASP LLM Top 10 + Agentic Top 10 risk register (scaffold).
+# Full mapping: issue #3 — catalog/owasp-llm-asi.yaml
+version: "0.0.0-scaffold"
+schema: agent-control/catalog/v1
+risks: []

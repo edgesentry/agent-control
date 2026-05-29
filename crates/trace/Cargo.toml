@@ -1,0 +1,10 @@
+[package]
+name = "trace"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "OpenTelemetry spans to OCSF export (scaffold)"
+
+[lib]
+path = "src/lib.rs"
