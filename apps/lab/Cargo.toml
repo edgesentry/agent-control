@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "CS02 CI/CD Observed Agent and P0 smoke harness (scaffold)"
+description = "CS02 CI/CD Observed Agent and P0 smoke harness"
 default-run = "lab"
 
 [[bin]]
@@ -12,6 +12,8 @@ name = "lab"
 path = "src/main.rs"
 
 [dependencies]
+clap = { version = "4", features = ["derive"] }
 guardian = { path = "../../crates/guardian" }
+serde = { workspace = true }
 serde_json = { workspace = true }
-trace = { path = "../../crates/trace" }
+thiserror = { workspace = true }

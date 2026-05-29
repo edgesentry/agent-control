@@ -26,7 +26,9 @@ make check   # fmt --check, build, test, clippy
 ## Run Observed Agent stubs
 
 ```bash
-cargo run -p lab
+cargo run -p lab          # CI/CD demo — Guardian blocks shell, allows read_file
+cargo run -p lab -- smoke # P0 OWASP smoke (10 categories)
+make smoke                # smoke + write examples/smoke-report.json
 cargo run -p soc
 ```
 
@@ -37,7 +39,7 @@ Release binaries after `cargo build --workspace --release`:
 | CS02 lab | `target/release/lab` |
 | CS01 soc | `target/release/soc` |
 
-The smoke CLI (`cargo run -p lab -- smoke`) arrives in issues #7–#8.
+The smoke CLI writes a JSON report with `--report path` (see `examples/smoke-report.json`).
 
 ## CI parity
 
@@ -47,6 +49,7 @@ Pull requests and `main` run [.github/workflows/ci.yml](https://github.com/edges
 - `cargo build --workspace`
 - `cargo test --workspace`
 - `cargo clippy --workspace --all-targets -- -D warnings`
+- `cargo run -p lab -- smoke` (P0 suite)
 
 ## Documentation locally
 

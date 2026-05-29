@@ -65,6 +65,9 @@ jobs:
       - name: Clippy (deny warnings)
         run: cargo clippy --workspace --all-targets -- -D warnings
 
+      - name: P0 smoke suite
+        run: cargo run -p lab -- smoke
+
   license_check:
     name: License check (cargo-deny)
     runs-on: ubuntu-latest
