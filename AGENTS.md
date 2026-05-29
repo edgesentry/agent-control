@@ -107,9 +107,10 @@ When adding behaviour docs, prefer `docs/` — keep README and AGENTS.md short.
 |------|:----:|:----:|
 | `agentTrigger`, `toolCallRequest`, `agentResponse` | ✓ | ✓ |
 | `knowledgeRetrieval`, `memoryStore` | ✓ | — |
+| `agbom`, `a2a`, `trace`, `humanGate` | ✓ (policy + parse) | — |
 | `toolCallResult`, `userMessage` | — | ✓ (issue #20) |
 
-Full table: [docs/architecture/acs-hooks.md](docs/architecture/acs-hooks.md). Policy engine: [docs/architecture/guardian.md](docs/architecture/guardian.md). A2A / MCP — stub + doc only before 30 Jun.
+Full table: [docs/architecture/acs-hooks.md](docs/architecture/acs-hooks.md). Policy pack: [policies/p0/README.md](policies/p0/README.md) ([#30](https://github.com/edgesentry/agent-control/pull/30)). Policy engine: [docs/architecture/guardian.md](docs/architecture/guardian.md).
 
 ## References
 

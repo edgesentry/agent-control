@@ -24,6 +24,8 @@ GitHub issues track the Cap Vista **submission MVP**. Week-by-week plan: [Schedu
 
 **Feature freeze:** 28 Jun 2026.
 
+Progress log (merged + in-review PRs): [Submission progress](progress.md).
+
 ## Portal pack (other repo)
 
 CoC annex and portal upload: **`edgesentry-commercial`** (issues #174–178).

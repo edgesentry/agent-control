@@ -37,7 +37,18 @@ On-prem and air-gapped steps: [docs — Getting started](https://edgesentry.gith
 
 ## Status
 
-Early scaffold — see [programme plan](https://edgesentry.github.io/agent-control/plan/) and [issue roadmap](https://edgesentry.github.io/agent-control/submission/roadmap/). Issue [#1](https://github.com/edgesentry/agent-control/issues/1) (monorepo) is complete; Guardian, trace, and smoke suite follow in #4–#8.
+**L2 foundation (catalog + Guardian + policies) is in place** — P0 smoke automation and trace export are next.
+
+| Area | Status | PR / issue |
+|------|--------|------------|
+| Monorepo, CI, docs site | ✓ Shipped | [#1](https://github.com/edgesentry/agent-control/issues/1), [#26](https://github.com/edgesentry/agent-control/pull/26) |
+| Dual license + `cargo-deny` | ✓ Shipped | [#2](https://github.com/edgesentry/agent-control/issues/2), [#27](https://github.com/edgesentry/agent-control/pull/27) |
+| OWASP risk catalog (LLM01–10, ASI01–10) | ✓ Shipped | [#3](https://github.com/edgesentry/agent-control/issues/3), [#29](https://github.com/edgesentry/agent-control/pull/29) |
+| Guardian policy engine | ✓ Shipped | [#4](https://github.com/edgesentry/agent-control/issues/4), [#28](https://github.com/edgesentry/agent-control/pull/28) |
+| **`policies/p0` OWASP-tagged pack** | **In review** | [#6](https://github.com/edgesentry/agent-control/issues/6), [**#30**](https://github.com/edgesentry/agent-control/pull/30) |
+| Trace → OCSF, lab smoke CLI, SOC demo | Planned | [#5](https://github.com/edgesentry/agent-control/issues/5)–[#10](https://github.com/edgesentry/agent-control/issues/10) |
+
+Detail: [submission progress](docs/submission/progress.md) · [issue roadmap](https://edgesentry.github.io/agent-control/submission/roadmap/).
 
 ## License
 
