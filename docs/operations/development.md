@@ -22,7 +22,7 @@ make check
 
 ## Smoke test IDs (L3)
 
-Prefix pattern: `AC-{LLM|ASI}{nn}-{slug}` — mapped from `catalog/owasp-llm-asi.yaml` (issue #3).
+Prefix pattern: `AC-{LLM|ASI}{nn}-{slug}` — mapped from `catalog/owasp-llm-asi.yaml` (`crates/catalog` validates at test time).
 
 ## Documentation
 

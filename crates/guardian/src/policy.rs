@@ -134,7 +134,10 @@ impl PolicyRule {
         }) {
             return true;
         }
-        if m.content_contains.iter().any(|needle| text.contains(&needle.to_lowercase())) {
+        if m.content_contains
+            .iter()
+            .any(|needle| text.contains(&needle.to_lowercase()))
+        {
             return true;
         }
         if let Some(ref expected) = m.trigger_type_equals {
