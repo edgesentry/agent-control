@@ -59,6 +59,8 @@ cargo test --workspace
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets -- -D warnings
 cargo deny check licenses
+cargo run -p lab -- smoke   # P0 OWASP suite (also in CI)
+make smoke                  # smoke + examples/smoke-report.json
 ```
 
 CI: `.github/workflows/ci.yml` (includes **license_check**). Docs: `mkdocs build --strict` (see `requirements-docs.txt`).
