@@ -38,8 +38,8 @@ Environment variable: `AGENT_CONTROL_TRACE_OUT` (see [on-prem deployment](../ope
 
 | File | Description |
 |------|-------------|
-| [`examples/ocsf-deny-tool.json`](../../examples/ocsf-deny-tool.json) | ASI05 shell/exec deny (single event) |
-| [`examples/ocsf-events.json`](../../examples/ocsf-events.json) | Full P0 smoke batch (10 events) |
+| [`examples/ocsf-deny-tool.json`](https://github.com/edgesentry/agent-control/blob/main/examples/ocsf-deny-tool.json) | ASI05 shell/exec deny (single event) |
+| [`examples/ocsf-events.json`](https://github.com/edgesentry/agent-control/blob/main/examples/ocsf-events.json) | Full P0 smoke batch (10 events) |
 
 Guardian verdict, hook, OWASP ids, and OTel trace/span ids are preserved under `unmapped.acs` and `unmapped.otel`.
 

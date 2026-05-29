@@ -55,10 +55,10 @@ make md-lint
 
 ## Dependency policy
 
-`cargo deny check licenses` runs in CI. Allow-list: Apache-2.0, MIT, BSD, ISC, Unicode-3.0, and related permissive licenses — see [deny.toml](../../deny.toml). **GPL / AGPL / LGPL / MPL** are denied for default builds.
+`cargo deny check licenses` runs in CI. Allow-list: Apache-2.0, MIT, BSD, ISC, Unicode-3.0, and related permissive licenses — see [deny.toml](https://github.com/edgesentry/agent-control/blob/main/deny.toml). **GPL / AGPL / LGPL / MPL** are denied for default builds.
 
 ```bash
 make deny
 ```
 
-Third-party inventory: [THIRD_PARTY.md](../../THIRD_PARTY.md).
+Third-party inventory: [THIRD_PARTY.md](https://github.com/edgesentry/agent-control/blob/main/THIRD_PARTY.md).

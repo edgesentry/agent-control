@@ -17,7 +17,7 @@ Automated probes: `cargo run -p lab -- smoke --trace-out examples`. Samples: [`o
 | ASI01:2026 | AC-ASI01 | `knowledgeRetrieval` | ✓ | ✓ | ✓ |
 | ASI02:2026 | AC-ASI02 | `toolCallRequest` | ✓ | ✓ | ✓ |
 | ASI04:2026 | AC-ASI04 | `agbom`, `toolCallRequest` | ✓ | ✓ | ✓ |
-| ASI05:2026 | AC-ASI05 | `toolCallRequest` | ✓ | ✓ | ✓ ([sample](../../examples/ocsf-deny-tool.json)) |
+| ASI05:2026 | AC-ASI05 | `toolCallRequest` | ✓ | ✓ | ✓ ([sample](https://github.com/edgesentry/agent-control/blob/main/examples/ocsf-deny-tool.json)) |
 | ASI06:2026 | AC-ASI06 | `memoryStore` | ✓ | ✓ | ✓ |
 | ASI07:2026 | AC-ASI07 | `a2a`, `agentTrigger` | ✓ | ✓ | ✓ |
 | ASI08:2026 | AC-ASI08 | `trace` | ✓ | ✓ | ✓ |

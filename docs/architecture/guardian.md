@@ -16,7 +16,7 @@
 | `trace` | `trace/correlation` |
 | `humanGate` | `instrument/humanGate` |
 
-Policy pack layout: [`policies/p0/README.md`](../../policies/p0/README.md).
+Policy pack layout: [`policies/p0/README.md`](https://github.com/edgesentry/agent-control/blob/main/policies/p0/README.md).
 
 ## Usage
 

@@ -4,8 +4,8 @@ Open-source **runtime control plane for AI agents**, aligned with the [Agent Con
 
 | Audience | Start here |
 |----------|------------|
-| **Humans** | [README](../README.md) on GitHub |
-| **Coding agents** | [AGENTS.md](../AGENTS.md) → [Programme plan](plan/index.md) |
+| **Humans** | [README](https://github.com/edgesentry/agent-control/blob/main/README.md) on GitHub |
+| **Coding agents** | [AGENTS.md](https://github.com/edgesentry/agent-control/blob/main/AGENTS.md) → [Programme plan](plan/index.md) |
 | **Cap Vista plan (full)** | [Programme plan index](plan/index.md) |
 
 ## Cap Vista programme
