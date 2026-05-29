@@ -1,0 +1,20 @@
+# CS01 — ASI09 analyst approval gate (humanGate)
+version: "1"
+rules:
+  - id: soc-allow-humanGate-with-token
+    hooks: [humanGate]
+    owasp: [ASI09]
+    match:
+      content_contains: [soc-analyst-demo-token]
+    decision: allow
+    message: Analyst approval token accepted (ASI09)
+    reason_codes: [AC-ASI09-gate-allow]
+
+  - id: soc-deny-humanGate-without-token
+    hooks: [humanGate]
+    owasp: [ASI09]
+    match:
+      content_contains: [destructive, high_impact]
+    decision: deny
+    message: High-impact action denied without analyst approval token (ASI09)
+    reason_codes: [AC-ASI09-gate]

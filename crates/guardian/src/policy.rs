@@ -45,6 +45,9 @@ pub struct MatchExpr {
     pub tool_id_contains: Vec<String>,
     #[serde(default)]
     pub content_contains: Vec<String>,
+    /// If any needle appears in searchable text, this rule does not match.
+    #[serde(default)]
+    pub unless_content_contains: Vec<String>,
     #[serde(default)]
     pub trigger_type_equals: Option<String>,
 }
@@ -125,6 +128,12 @@ impl PolicyRule {
         }
         let m = &self.r#match;
         let text = request.searchable_text.to_lowercase();
+        if m.unless_content_contains
+            .iter()
+            .any(|needle| text.contains(&needle.to_lowercase()))
+        {
+            return false;
+        }
         if m.tool_id_contains.iter().any(|needle| {
             request
                 .tool_id

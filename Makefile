@@ -1,4 +1,4 @@
-.PHONY: build test fmt clippy deny check docs-build docs-serve md-lint smoke soc-triage
+.PHONY: build test fmt clippy deny check docs-build docs-serve md-lint smoke soc-triage soc-gate
 
 build:
 	cargo build --workspace
@@ -11,6 +11,9 @@ smoke:
 
 soc-triage:
 	cargo run -p soc -- triage --report examples/soc-triage-report.json --trace-out examples
+
+soc-gate:
+	cargo run -p soc -- gate
 
 fmt:
 	cargo fmt --all

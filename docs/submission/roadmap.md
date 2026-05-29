@@ -14,8 +14,8 @@ GitHub issues track the Cap Vista **submission MVP**. Week-by-week plan: [Schedu
 | [#6](https://github.com/edgesentry/agent-control/issues/6) | `policies/p0` | Done |
 | [#7](https://github.com/edgesentry/agent-control/issues/7) | `apps/lab` | Done ([#31](https://github.com/edgesentry/agent-control/pull/31)) |
 | [#8](https://github.com/edgesentry/agent-control/issues/8) | P0 smoke 10/10 | Done (probes + OCSF via #5) |
-| [#9](https://github.com/edgesentry/agent-control/issues/9) | `apps/soc` | In review |
-| [#10](https://github.com/edgesentry/agent-control/issues/10) | Analyst approval gate | Open |
+| [#9](https://github.com/edgesentry/agent-control/issues/9) | `apps/soc` | Done ([#34](https://github.com/edgesentry/agent-control/pull/34)) |
+| [#10](https://github.com/edgesentry/agent-control/issues/10) | Analyst approval gate | In review |
 | [#11](https://github.com/edgesentry/agent-control/issues/11) | OWASP coverage matrix doc | Draft |
 | [#12](https://github.com/edgesentry/agent-control/issues/12) | Security boundary doc | Open |
 | [#13](https://github.com/edgesentry/agent-control/issues/13) | ACS alignment doc | Open |

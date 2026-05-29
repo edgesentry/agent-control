@@ -71,6 +71,9 @@ jobs:
       - name: SOC triage playbook
         run: cargo run -p soc -- triage
 
+      - name: SOC analyst gate demo
+        run: cargo run -p soc -- gate
+
   license_check:
     name: License check (cargo-deny)
     runs-on: ubuntu-latest
