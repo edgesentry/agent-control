@@ -7,7 +7,7 @@ test:
 	cargo test --workspace
 
 smoke:
-	cargo run -p lab -- smoke --report examples/smoke-report.json
+	cargo run -p lab -- smoke --report examples/smoke-report.json --trace-out examples
 
 fmt:
 	cargo fmt --all

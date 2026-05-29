@@ -7,6 +7,7 @@ use std::time::Instant;
 use guardian::Decision;
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
+use trace::{write_batch, write_json, GuardianRecord, OcsfEvent, Tracer};
 
 use crate::agent::LabAgent;
 
@@ -48,6 +49,8 @@ pub struct CategoryResult {
     pub reason_codes: Vec<String>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub matched_policy_ids: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub ocsf_uid: Option<String>,
 }
 
 fn lab_context() -> Value {
@@ -216,15 +219,48 @@ fn decision_label(d: Decision) -> &'static str {
     }
 }
 
-pub fn run_smoke(agent: &LabAgent, report_path: Option<&Path>) -> Result<SmokeReport, String> {
+pub struct SmokeOutput {
+    pub report: SmokeReport,
+    pub ocsf_events: Vec<OcsfEvent>,
+}
+
+pub fn run_smoke(
+    agent: &LabAgent,
+    report_path: Option<&Path>,
+    trace_out: Option<&Path>,
+) -> Result<SmokeOutput, String> {
     let started = Instant::now();
     let probes = p0_probes();
     let mut categories = Vec::with_capacity(probes.len());
+    let mut tracer = Tracer::new();
+    let mut ocsf_events = Vec::with_capacity(probes.len());
 
     for probe in &probes {
+        let probe_started = Instant::now();
         let verdict = agent
             .evaluate_step(probe.acs_method, probe.params.clone(), probe.probe_id)
             .map_err(|e| format!("{}: {e}", probe.probe_id))?;
+        let probe_ms = probe_started.elapsed().as_millis() as u64;
+
+        let span = tracer.record_guardian(
+            format!("guardian.{}", probe.hook),
+            GuardianRecord {
+                hook: probe.hook.to_string(),
+                acs_method: probe.acs_method.to_string(),
+                decision: decision_label(verdict.decision).to_string(),
+                message: verdict.message.clone(),
+                reason_codes: verdict.reason_codes.clone(),
+                matched_policy_ids: verdict.matched_policy_ids.clone(),
+                session_id: Some("smoke-session".into()),
+                agent_id: Some("lab-smoke".into()),
+                probe_id: Some(probe.probe_id.to_string()),
+                owasp_ids: probe.owasp.iter().map(|s| (*s).to_string()).collect(),
+            },
+            probe_ms.max(1),
+        );
+        let ocsf = span.to_ocsf();
+        let ocsf_uid = ocsf.metadata.uid.clone();
+        ocsf_events.push(ocsf);
 
         let passed = verdict.decision == probe.expect;
         categories.push(CategoryResult {
@@ -239,6 +275,7 @@ pub fn run_smoke(agent: &LabAgent, report_path: Option<&Path>) -> Result<SmokeRe
             message: verdict.message,
             reason_codes: verdict.reason_codes,
             matched_policy_ids: verdict.matched_policy_ids,
+            ocsf_uid: Some(ocsf_uid),
         });
     }
 
@@ -260,7 +297,20 @@ pub fn run_smoke(agent: &LabAgent, report_path: Option<&Path>) -> Result<SmokeRe
         std::fs::write(path, json).map_err(|e| e.to_string())?;
     }
 
-    Ok(report)
+    if let Some(dir) = trace_out {
+        write_batch(&dir.join("ocsf-events.json"), &ocsf_events).map_err(|e| e.to_string())?;
+        if let Some(deny) = ocsf_events
+            .iter()
+            .find(|e| e.finding_info.types.iter().any(|t| t == "AC-ASI05-exec"))
+        {
+            write_json(&dir.join("ocsf-deny-tool.json"), deny).map_err(|e| e.to_string())?;
+        }
+    }
+
+    Ok(SmokeOutput {
+        report,
+        ocsf_events,
+    })
 }
 
 pub fn print_smoke_summary(report: &SmokeReport, mut out: impl Write) -> io::Result<()> {
@@ -296,8 +346,11 @@ mod tests {
 
     #[test]
     fn p0_smoke_ten_of_ten() {
-        let report = run_smoke(&smoke_agent(), None).expect("smoke run");
+        let output = run_smoke(&smoke_agent(), None, None).expect("smoke run");
+        let report = &output.report;
         assert_eq!(report.total, 10, "expected 10 P0 categories");
+        assert_eq!(output.ocsf_events.len(), 10);
+        assert!(report.categories.iter().all(|c| c.ocsf_uid.is_some()));
         assert_eq!(
             report.failed,
             0,

@@ -12,8 +12,9 @@ name = "lab"
 path = "src/main.rs"
 
 [dependencies]
-clap = { version = "4", features = ["derive"] }
+clap = { version = "4", features = ["derive", "env"] }
 guardian = { path = "../../crates/guardian" }
 serde = { workspace = true }
 serde_json = { workspace = true }
+trace = { path = "../../crates/trace" }
 thiserror = { workspace = true }

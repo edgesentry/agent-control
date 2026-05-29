@@ -37,21 +37,20 @@ On-prem and air-gapped steps: [docs — Getting started](https://edgesentry.gith
 
 ## Status
 
-**L2 complete; L3 smoke harness in review** — P0 probes 10/10 green in [PR #31](https://github.com/edgesentry/agent-control/pull/31). Trace/OCSF and SOC are next.
+**L2 + L3 CS02 core in place** — smoke 10/10 with OCSF export ([#5](https://github.com/edgesentry/agent-control/issues/5) in review). SOC (#9–#10) is next.
 
 | Area | Status | PR / issue |
 |------|--------|------------|
-| Monorepo, CI, docs site | ✓ Shipped | [#1](https://github.com/edgesentry/agent-control/issues/1), [#26](https://github.com/edgesentry/agent-control/pull/26) |
-| Dual license + `cargo-deny` | ✓ Shipped | [#2](https://github.com/edgesentry/agent-control/issues/2), [#27](https://github.com/edgesentry/agent-control/pull/27) |
-| OWASP risk catalog (LLM01–10, ASI01–10) | ✓ Shipped | [#3](https://github.com/edgesentry/agent-control/issues/3), [#29](https://github.com/edgesentry/agent-control/pull/29) |
-| Guardian policy engine | ✓ Shipped | [#4](https://github.com/edgesentry/agent-control/issues/4), [#28](https://github.com/edgesentry/agent-control/pull/28) |
-| `policies/p0` OWASP pack | ✓ Shipped | [#6](https://github.com/edgesentry/agent-control/issues/6), [#30](https://github.com/edgesentry/agent-control/pull/30) |
-| **`apps/lab` + smoke CLI (10/10 probes)** | **In review** | [#7](https://github.com/edgesentry/agent-control/issues/7), [**#31**](https://github.com/edgesentry/agent-control/pull/31) |
-| Trace → OCSF, SOC demo | Planned | [#5](https://github.com/edgesentry/agent-control/issues/5)–[#10](https://github.com/edgesentry/agent-control/issues/10) |
+| Monorepo, CI, docs site | ✓ Shipped | #1, [#26](https://github.com/edgesentry/agent-control/pull/26) |
+| Dual license + `cargo-deny` | ✓ Shipped | #2, [#27](https://github.com/edgesentry/agent-control/pull/27) |
+| OWASP catalog + Guardian + policies | ✓ Shipped | #3–#4, #6 · [#29](https://github.com/edgesentry/agent-control/pull/29)–[#30](https://github.com/edgesentry/agent-control/pull/30) |
+| `apps/lab` + smoke 10/10 | ✓ Shipped | #7–#8 · [#31](https://github.com/edgesentry/agent-control/pull/31) |
+| **Trace → OCSF export** | **In review** | [#5](https://github.com/edgesentry/agent-control/issues/5) |
+| SOC demo | Planned | [#9](https://github.com/edgesentry/agent-control/issues/9)–[#10](https://github.com/edgesentry/agent-control/issues/10) |
 
 ```bash
-cargo run -p lab -- smoke   # P0 OWASP suite
-make smoke                  # + examples/smoke-report.json
+cargo run -p lab -- smoke --trace-out examples
+make smoke
 ```
 
 Detail: [submission progress](docs/submission/progress.md) · [issue roadmap](https://edgesentry.github.io/agent-control/submission/roadmap/).

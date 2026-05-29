@@ -10,13 +10,13 @@ GitHub issues track the Cap Vista **submission MVP**. Week-by-week plan: [Schedu
 | [#2](https://github.com/edgesentry/agent-control/issues/2) | Apache-2.0 OR MIT + `cargo-deny` | Done |
 | [#3](https://github.com/edgesentry/agent-control/issues/3) | OWASP catalog YAML | Done |
 | [#4](https://github.com/edgesentry/agent-control/issues/4) | `crates/guardian` | Done |
-| [#5](https://github.com/edgesentry/agent-control/issues/5) | `crates/trace` | Open |
+| [#5](https://github.com/edgesentry/agent-control/issues/5) | `crates/trace` | In review |
 | [#6](https://github.com/edgesentry/agent-control/issues/6) | `policies/p0` | Done |
-| [#7](https://github.com/edgesentry/agent-control/issues/7) | `apps/lab` | In review ([#31](https://github.com/edgesentry/agent-control/pull/31)) |
-| [#8](https://github.com/edgesentry/agent-control/issues/8) | P0 smoke 10/10 | Probes green ([#31](https://github.com/edgesentry/agent-control/pull/31)); OCSF #5 |
+| [#7](https://github.com/edgesentry/agent-control/issues/7) | `apps/lab` | Done ([#31](https://github.com/edgesentry/agent-control/pull/31)) |
+| [#8](https://github.com/edgesentry/agent-control/issues/8) | P0 smoke 10/10 | Done (probes + OCSF via #5) |
 | [#9](https://github.com/edgesentry/agent-control/issues/9) | `apps/soc` | Open |
 | [#10](https://github.com/edgesentry/agent-control/issues/10) | Analyst approval gate | Open |
-| [#11](https://github.com/edgesentry/agent-control/issues/11) | OWASP coverage matrix doc | Draft ([#31](https://github.com/edgesentry/agent-control/pull/31) updates matrix) |
+| [#11](https://github.com/edgesentry/agent-control/issues/11) | OWASP coverage matrix doc | Draft |
 | [#12](https://github.com/edgesentry/agent-control/issues/12) | Security boundary doc | Open |
 | [#13](https://github.com/edgesentry/agent-control/issues/13) | ACS alignment doc | Open |
 | [#14](https://github.com/edgesentry/agent-control/issues/14) | Demo script | Open |

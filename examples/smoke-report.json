@@ -25,7 +25,8 @@
       ],
       "matched_policy_ids": [
         "p0-deny-rag-injection"
-      ]
+      ],
+      "ocsf_uid": "span-000000000002"
     },
     {
       "category": "LLM02",
@@ -44,7 +45,8 @@
       ],
       "matched_policy_ids": [
         "p0-redact-secrets-response"
-      ]
+      ],
+      "ocsf_uid": "span-000000000003"
     },
     {
       "category": "LLM06_ASI02",
@@ -65,7 +67,8 @@
       ],
       "matched_policy_ids": [
         "p0-deny-recursive-tools"
-      ]
+      ],
+      "ocsf_uid": "span-000000000004"
     },
     {
       "category": "ASI04",
@@ -84,7 +87,8 @@
       ],
       "matched_policy_ids": [
         "p0-deny-untrusted-agbom"
-      ]
+      ],
+      "ocsf_uid": "span-000000000005"
     },
     {
       "category": "ASI05",
@@ -103,7 +107,8 @@
       ],
       "matched_policy_ids": [
         "p0-deny-shell-exec"
-      ]
+      ],
+      "ocsf_uid": "span-000000000006"
     },
     {
       "category": "ASI06",
@@ -122,7 +127,8 @@
       ],
       "matched_policy_ids": [
         "p0-deny-memory-poison"
-      ]
+      ],
+      "ocsf_uid": "span-000000000007"
     },
     {
       "category": "ASI07",
@@ -141,7 +147,8 @@
       ],
       "matched_policy_ids": [
         "p0-deny-unauthorized-a2a"
-      ]
+      ],
+      "ocsf_uid": "span-000000000008"
     },
     {
       "category": "ASI08",
@@ -160,7 +167,8 @@
       ],
       "matched_policy_ids": [
         "p0-deny-cascade-trace"
-      ]
+      ],
+      "ocsf_uid": "span-000000000009"
     },
     {
       "category": "ASI09",
@@ -179,7 +187,8 @@
       ],
       "matched_policy_ids": [
         "p0-warn-overconfident-output"
-      ]
+      ],
+      "ocsf_uid": "span-00000000000a"
     },
     {
       "category": "LLM10_ASI10",
@@ -200,7 +209,8 @@
       ],
       "matched_policy_ids": [
         "p0-deny-runaway-trigger"
-      ]
+      ],
+      "ocsf_uid": "span-00000000000b"
     }
   ]
 }
