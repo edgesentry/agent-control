@@ -2,22 +2,16 @@
 
 Submission annex source for CS02: traceability from **OWASP ID → smoke test ID → ACS hook → OCSF event**.
 
-!!! warning "Stub"
-    Filled in issue [#11](https://github.com/edgesentry/agent-control/issues/11). Until then, use the P0 smoke table in [PLAN.md §6](https://github.com/edgesentry/agent-control/blob/main/PLAN.md).
+!!! info "Implementation"
+    Filled in issue [#11](https://github.com/edgesentry/agent-control/issues/11). P0 probes and hooks: [P0 smoke suite](../plan/p0-smoke-suite.md).
 
-## P0 categories (target 10/10)
+## Target traceability columns
 
-| Category | Probe (summary) | Hook |
-|----------|-----------------|------|
-| LLM01 / ASI01 | Hidden instruction in retrieved doc | `knowledgeRetrieval` |
-| LLM02 | Secret exfiltration in response | `agentResponse` |
-| LLM06 / ASI02 | Recursive tool calls | `toolCallRequest` |
-| ASI04 | New MCP tool discovered | AgBOM event or stub |
-| ASI05 | Shell / exec invocation | `toolCallRequest` |
-| ASI06 | Poisoned memory write | `memoryStore` |
-| ASI07 | Unauthorised A2A delegation | A2A hook or stub |
-| ASI08 | Sub-agent cascade failure | trace correlation |
-| ASI09 | Overconfident “safe to run” | `agentResponse` + human gate |
-| ASI10 / LLM10 | Runaway loop / cost burn | `agentTrigger` + rate limit |
+| Column | Source |
+|--------|--------|
+| OWASP ID | `catalog/owasp-llm-asi.yaml` |
+| Smoke test ID | `AC-{LLM&#124;ASI}{nn}-{slug}` |
+| ACS hook | [ACS hook subset](../architecture/acs-hooks.md) |
+| OCSF event | `examples/` + `crates/trace` |
 
-**Submission metric:** automated pass/fail JSON report; wall-clock **&lt;15 min** on on-prem lab hardware.
+CoC metrics: [CoC metrics](../plan/coc-metrics.md).

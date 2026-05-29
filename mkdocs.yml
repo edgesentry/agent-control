@@ -48,6 +48,21 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting started: getting-started.md
+  - Programme plan:
+    - Plan index: plan/index.md
+    - Purpose and scope: plan/purpose.md
+    - MVPs and challenges: plan/mvps-and-challenges.md
+    - Submission DoD: plan/submission-dod.md
+    - Monorepo layout: plan/monorepo-layout.md
+    - P0 smoke suite: plan/p0-smoke-suite.md
+    - CS01 SOC slice: plan/cs01-soc-slice.md
+    - Schedule (W1–W5): plan/schedule.md
+    - Phase 1 trial: plan/phase1-trial.md
+    - CoC metrics: plan/coc-metrics.md
+    - Technology choices: plan/technology.md
+    - Risks: plan/risks.md
+    - Success checklist: plan/success-checklist.md
+    - References: plan/references.md
   - Architecture:
     - Security boundary: architecture/security-boundary.md
     - Repository layout: architecture/repo-layout.md
@@ -55,9 +70,8 @@ nav:
   - Operations:
     - On-prem deployment: operations/on-prem.md
     - Development: operations/development.md
-  - Submission (Cap Vista):
-    - Roadmap: submission/roadmap.md
+  - Submission artefacts:
+    - Issue roadmap: submission/roadmap.md
     - OWASP coverage matrix: submission/owasp-coverage.md
     - Demo script: submission/demo.md
-    - Phase 1 trial: submission/phase1-trial.md
     - ACS alignment: submission/acs-alignment.md

@@ -1,6 +1,6 @@
-# Roadmap
+# Issue roadmap
 
-GitHub issues track the Cap Vista **submission MVP** (deadline **30 Jun 2026**). Full week-by-week plan: [PLAN.md](https://github.com/edgesentry/agent-control/blob/main/PLAN.md).
+GitHub issues track the Cap Vista **submission MVP**. Week-by-week plan: [Schedule](../plan/schedule.md). Definition of done: [Submission DoD](../plan/submission-dod.md).
 
 ## P0 — must ship in repo
 
@@ -22,18 +22,8 @@ GitHub issues track the Cap Vista **submission MVP** (deadline **30 Jun 2026**).
 | [#14](https://github.com/edgesentry/agent-control/issues/14) | Demo script | Open |
 | [#15](https://github.com/edgesentry/agent-control/issues/15) | Tag `v0.1.0-submission` | Open |
 
-## Schedule snapshot
-
-| Week | Focus |
-|------|--------|
-| W1 (29 May – 4 Jun) | Scaffold + Guardian core |
-| W2 | `apps/lab`, catalog, smoke 6/10 |
-| W3 | trace/OCSF, smoke 10/10, soc skeleton |
-| W4 | SOC gate, docs, demo |
-| W5 | Video, CoC sync, tag |
-
 **Feature freeze:** 28 Jun 2026.
 
 ## Portal pack (other repo)
 
-CoC annex, metrics table, and portal upload live in **`edgesentry-commercial`** (issues #174–178) — not in this repository.
+CoC annex and portal upload: **`edgesentry-commercial`** (issues #174–178).

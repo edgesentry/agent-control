@@ -12,8 +12,8 @@ Deploy on your own hardware first: no cloud is required to build or run the cont
 |----------|------------|
 | **Everyone (overview)** | This README |
 | **Published detail** | **[https://edgesentry.github.io/agent-control/](https://edgesentry.github.io/agent-control/)** (MkDocs) |
-| **Coding agents** | [AGENTS.md](AGENTS.md) |
-| **Programme plan** | [PLAN.md](PLAN.md) |
+| **Coding agents** | [AGENTS.md](AGENTS.md) → [programme plan](docs/plan/index.md) |
+| **Programme plan** | [docs/plan/](docs/plan/index.md) (root `PLAN.md` is a pointer) |
 
 ## What it does
 
@@ -37,7 +37,7 @@ On-prem and air-gapped steps: [docs — Getting started](https://edgesentry.gith
 
 ## Status
 
-Early scaffold — see [roadmap](https://edgesentry.github.io/agent-control/submission/roadmap/) on the docs site. Issue [#1](https://github.com/edgesentry/agent-control/issues/1) (monorepo) is complete; Guardian, trace, and smoke suite follow in #4–#8.
+Early scaffold — see [programme plan](https://edgesentry.github.io/agent-control/plan/) and [issue roadmap](https://edgesentry.github.io/agent-control/submission/roadmap/). Issue [#1](https://github.com/edgesentry/agent-control/issues/1) (monorepo) is complete; Guardian, trace, and smoke suite follow in #4–#8.
 
 ## License
 
@@ -45,6 +45,7 @@ Early scaffold — see [roadmap](https://edgesentry.github.io/agent-control/subm
 
 ## Links
 
+- [Programme plan](docs/plan/index.md)
 - [Agent Control Standard](https://agentcontrolstandard.ai)
 - [OWASP Gen AI Security](https://genai.owasp.org/)
 - [GitHub — edgesentry/agent-control](https://github.com/edgesentry/agent-control)

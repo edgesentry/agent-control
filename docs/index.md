@@ -2,15 +2,15 @@
 
 Open-source **runtime control plane for AI agents**, aligned with the [Agent Control Standard (ACS)](https://agentcontrolstandard.ai) and OWASP Gen AI / Agentic Top 10.
 
-This site holds detailed design and operations docs. For a short overview:
-
-- **Humans** — [README](../README.md) on GitHub
-- **Coding agents** — [AGENTS.md](../AGENTS.md) on GitHub
-- **Programme plan** — [PLAN.md](../PLAN.md) (submission schedule, internal)
+| Audience | Start here |
+|----------|------------|
+| **Humans** | [README](../README.md) on GitHub |
+| **Coding agents** | [AGENTS.md](../AGENTS.md) → [Programme plan](plan/index.md) |
+| **Cap Vista plan (full)** | [Programme plan index](plan/index.md) |
 
 ## Cap Vista programme
 
-We target **CS02** (adversarial AI security testing / Guardian Lab) as primary and **CS01** (agentic SOC) as secondary, with one platform story: *the lab proves security; SOC reuses the same policy pack.*
+We target **CS02** (adversarial AI security testing / Guardian Lab) as primary and **CS01** (agentic SOC) as secondary.
 
 Submission deadline: **30 June 2026, 13:00 SGT**.
 
@@ -22,10 +22,12 @@ Submission deadline: **30 June 2026, 13:00 SGT**.
 | Topic | Page |
 |-------|------|
 | Clone, build, run | [Getting started](getting-started.md) |
-| L1 / L2 / L3 boundaries | [Security boundary](architecture/security-boundary.md) |
-| Crate and directory map | [Repository layout](architecture/repo-layout.md) |
+| Programme plan (was `PLAN.md`) | [Plan index](plan/index.md) |
+| L1 / L2 / L3 boundaries | [Purpose](plan/purpose.md) · [Security boundary](architecture/security-boundary.md) |
+| Submission DoD | [Submission DoD](plan/submission-dod.md) |
+| P0 smoke suite | [P0 smoke suite](plan/p0-smoke-suite.md) |
+| W1–W5 schedule | [Schedule](plan/schedule.md) |
 | On-prem / air-gap | [On-prem deployment](operations/on-prem.md) |
-| Issue roadmap | [Roadmap](submission/roadmap.md) |
 
 ## Layered architecture
 
