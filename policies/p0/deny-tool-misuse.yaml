@@ -1,0 +1,29 @@
+# P0 — LLM06 excessive agency / ASI02 tool misuse / ASI03 privilege abuse / ASI04 supply chain
+version: "1"
+rules:
+  - id: p0-deny-recursive-tools
+    hooks: [toolCallRequest]
+    owasp: [LLM06, ASI02]
+    match:
+      tool_id_contains: [recursive, fanout, spawn_agent, call_agent_loop, unbounded]
+    decision: deny
+    message: Recursive or unbounded tool chain blocked (LLM06 / ASI02)
+    reason_codes: [AC-LLM06-agency, AC-ASI02-misuse]
+
+  - id: p0-deny-privilege-escalation
+    hooks: [toolCallRequest, agentTrigger]
+    owasp: [ASI03]
+    match:
+      tool_id_contains: [sudo, admin_escalation, impersonate, assume_role]
+    decision: deny
+    message: Privilege escalation tool blocked (ASI03)
+    reason_codes: [AC-ASI03-privilege]
+
+  - id: p0-quarantine-unverified-mcp
+    hooks: [toolCallRequest]
+    owasp: [ASI04]
+    match:
+      tool_id_contains: [mcp_unverified, unsigned_mcp, unlisted_registry]
+    decision: deny
+    message: Unverified MCP tool quarantined (ASI04)
+    reason_codes: [AC-ASI04-supply]

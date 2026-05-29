@@ -11,6 +11,12 @@
 | `agentResponse` | `steps/message` |
 | `knowledgeRetrieval` | `steps/knowledgeRetrieval` |
 | `memoryStore` | `steps/memoryStore` |
+| `agbom` | `inspect/agbom` |
+| `a2a` | `a2a/send` |
+| `trace` | `trace/correlation` |
+| `humanGate` | `instrument/humanGate` |
+
+Policy pack layout: [`policies/p0/README.md`](../../policies/p0/README.md).
 
 ## Usage
 

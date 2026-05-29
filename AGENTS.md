@@ -82,7 +82,7 @@ Before finishing a change: workspace build + tests green; clippy clean; no secre
 | 3 | `catalog/owasp-llm-asi.yaml` ✓ |
 | 4 | `crates/guardian` ✓ |
 | 5 | `crates/trace` |
-| 6 | `policies/p0` |
+| 6 | `policies/p0` ✓ |
 | 7–8 | `apps/lab` + P0 smoke 10/10 |
 | 9–10 | `apps/soc` + analyst gate |
 | 11–15 | Coverage matrix, docs, demo, tag `v0.1.0-submission` |

@@ -11,7 +11,7 @@ GitHub issues track the Cap Vista **submission MVP**. Week-by-week plan: [Schedu
 | [#3](https://github.com/edgesentry/agent-control/issues/3) | OWASP catalog YAML | Done |
 | [#4](https://github.com/edgesentry/agent-control/issues/4) | `crates/guardian` | Done |
 | [#5](https://github.com/edgesentry/agent-control/issues/5) | `crates/trace` | Open |
-| [#6](https://github.com/edgesentry/agent-control/issues/6) | `policies/p0` | Open |
+| [#6](https://github.com/edgesentry/agent-control/issues/6) | `policies/p0` | Done |
 | [#7](https://github.com/edgesentry/agent-control/issues/7) | `apps/lab` | Open |
 | [#8](https://github.com/edgesentry/agent-control/issues/8) | P0 smoke 10/10 | Open |
 | [#9](https://github.com/edgesentry/agent-control/issues/9) | `apps/soc` | Open |

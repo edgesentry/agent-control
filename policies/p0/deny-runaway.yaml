@@ -1,0 +1,20 @@
+# P0 — LLM10 unbounded consumption / ASI10 rogue agents
+version: "1"
+rules:
+  - id: p0-deny-runaway-trigger
+    hooks: [agentTrigger]
+    owasp: [LLM10, ASI10]
+    match:
+      content_contains: [runaway, unbounded_loop, max_cost_exceeded]
+    decision: deny
+    message: Runaway or unbounded agent trigger blocked (LLM10 / ASI10)
+    reason_codes: [AC-LLM10-consumption, AC-ASI10-rogue]
+
+  - id: p0-deny-burn-tool-loop
+    hooks: [toolCallRequest]
+    owasp: [LLM10]
+    match:
+      tool_id_contains: [token_burn, infinite_loop, cost_burn]
+    decision: deny
+    message: Unbounded tool consumption blocked (LLM10)
+    reason_codes: [AC-LLM10-burn]

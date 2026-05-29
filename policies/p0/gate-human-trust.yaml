@@ -1,0 +1,22 @@
+# P0 — ASI09 human-agent trust (response warning + analyst gate)
+version: "1"
+rules:
+  - id: p0-warn-overconfident-output
+    hooks: [agentResponse]
+    owasp: [ASI09]
+    match:
+      content_contains: ["safe to run", "no risk", "guaranteed safe", "just execute"]
+    decision: modify
+    message: High-impact recommendation requires analyst review (ASI09)
+    reason_codes: [AC-ASI09-trust]
+    modify:
+      content_prefix: "[GUARDIAN: analyst approval required] "
+
+  - id: p0-deny-high-impact-without-token
+    hooks: [humanGate]
+    owasp: [ASI09]
+    match:
+      content_contains: [high_impact, destructive]
+    decision: deny
+    message: High-impact action denied without analyst approval token (ASI09)
+    reason_codes: [AC-ASI09-gate]

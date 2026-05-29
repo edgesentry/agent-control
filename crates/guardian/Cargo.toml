@@ -13,4 +13,5 @@ serde_yaml = { workspace = true }
 thiserror = { workspace = true }
 
 [dev-dependencies]
+catalog = { path = "../catalog" }
 tempfile = "3"
