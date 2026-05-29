@@ -74,6 +74,7 @@ dependencies = [
 name = "guardian"
 version = "0.1.0"
 dependencies = [
+ "catalog",
  "serde",
  "serde_json",
  "serde_yaml",

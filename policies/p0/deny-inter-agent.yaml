@@ -1,0 +1,29 @@
+# P0 — ASI07 insecure inter-agent communication / ASI08 cascade (trace hook)
+version: "1"
+rules:
+  - id: p0-deny-unauthorized-a2a
+    hooks: [a2a]
+    owasp: [ASI07]
+    match:
+      content_contains: [a2a_delegate, cross_agent, not_allowlisted]
+    decision: deny
+    message: Unauthorized agent-to-agent delegation blocked (ASI07)
+    reason_codes: [AC-ASI07-a2a]
+
+  - id: p0-deny-a2a-via-trigger
+    hooks: [agentTrigger]
+    owasp: [ASI07]
+    match:
+      trigger_type_equals: a2a_delegate
+    decision: deny
+    message: Agent trigger for unauthorized A2A blocked (ASI07)
+    reason_codes: [AC-ASI07-trigger]
+
+  - id: p0-deny-cascade-trace
+    hooks: [trace]
+    owasp: [ASI08]
+    match:
+      content_contains: [cascade_failure, depth_exceeded, fanout_exceeded]
+    decision: deny
+    message: Cascading agent failure pattern blocked (ASI08)
+    reason_codes: [AC-ASI08-cascade]

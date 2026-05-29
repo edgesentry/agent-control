@@ -127,8 +127,35 @@ fn extract_searchable_text(hook: Hook, params: &Value) -> String {
                 }
             }
         }
+        Hook::Agbom => {
+            push_string_field(params, "/artifact/id", &mut parts);
+            push_string_field(params, "/artifact/name", &mut parts);
+            push_string_field(params, "/registry/trust", &mut parts);
+        }
+        Hook::A2a => {
+            push_string_field(params, "/delegate/agentId", &mut parts);
+            push_string_field(params, "/message/body", &mut parts);
+            collect_content_parts(params.pointer("/message/content"), &mut parts);
+        }
+        Hook::Trace => {
+            push_string_field(params, "/correlation/status", &mut parts);
+            push_string_field(params, "/correlation/pattern", &mut parts);
+            if let Ok(s) = serde_json::to_string(&params) {
+                parts.push(s);
+            }
+        }
+        Hook::HumanGate => {
+            push_string_field(params, "/approval/token", &mut parts);
+            push_string_field(params, "/action/risk", &mut parts);
+        }
     }
     parts.join("\n")
+}
+
+fn push_string_field(params: &Value, pointer: &str, parts: &mut Vec<String>) {
+    if let Some(s) = params.pointer(pointer).and_then(|v| v.as_str()) {
+        parts.push(s.to_string());
+    }
 }
 
 fn collect_input_values(node: Option<&Value>, parts: &mut Vec<String>) {

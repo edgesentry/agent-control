@@ -1,0 +1,15 @@
+# P0 — LLM01 prompt injection / ASI01 goal hijack on knowledge retrieval
+version: "1"
+rules:
+  - id: p0-deny-rag-injection
+    hooks: [knowledgeRetrieval]
+    owasp: [LLM01, ASI01]
+    match:
+      content_contains:
+        - ignore previous
+        - disregard instructions
+        - system override
+        - hidden instruction
+    decision: deny
+    message: Injected instructions in retrieved context blocked (LLM01 / ASI01)
+    reason_codes: [AC-LLM01-inject, AC-ASI01-hijack]

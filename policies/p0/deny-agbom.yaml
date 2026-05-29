@@ -1,0 +1,11 @@
+# P0 — ASI04 agentic supply chain on AgBOM inspect hook
+version: "1"
+rules:
+  - id: p0-deny-untrusted-agbom
+    hooks: [agbom]
+    owasp: [ASI04]
+    match:
+      content_contains: [unsigned, unlisted_registry, revoked]
+    decision: deny
+    message: Untrusted agent or tool artifact blocked at AgBOM (ASI04)
+    reason_codes: [AC-ASI04-agbom]

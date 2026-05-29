@@ -9,6 +9,14 @@ pub enum Hook {
     AgentResponse,
     KnowledgeRetrieval,
     MemoryStore,
+    /// ACS `inspect/agbom` (P0 smoke ASI04).
+    Agbom,
+    /// Agent-to-agent messaging (P0 smoke ASI07).
+    A2a,
+    /// Trace correlation export (P0 smoke ASI08).
+    Trace,
+    /// Analyst approval gate (P0 smoke ASI09).
+    HumanGate,
 }
 
 impl Hook {
@@ -20,6 +28,10 @@ impl Hook {
             Self::AgentResponse => "steps/message",
             Self::KnowledgeRetrieval => "steps/knowledgeRetrieval",
             Self::MemoryStore => "steps/memoryStore",
+            Self::Agbom => "inspect/agbom",
+            Self::A2a => "a2a/send",
+            Self::Trace => "trace/correlation",
+            Self::HumanGate => "instrument/humanGate",
         }
     }
 
@@ -31,6 +43,10 @@ impl Hook {
             "steps/message" | "agentResponse" | "message" => Some(Self::AgentResponse),
             "steps/knowledgeRetrieval" | "knowledgeRetrieval" => Some(Self::KnowledgeRetrieval),
             "steps/memoryStore" | "memoryStore" => Some(Self::MemoryStore),
+            "inspect/agbom" | "agbom" => Some(Self::Agbom),
+            "a2a/send" | "a2a/message/stream" | "a2a" => Some(Self::A2a),
+            "trace/correlation" | "trace" => Some(Self::Trace),
+            "instrument/humanGate" | "humanGate" => Some(Self::HumanGate),
             _ => None,
         }
     }

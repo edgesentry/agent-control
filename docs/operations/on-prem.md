@@ -12,7 +12,7 @@ cargo build --workspace --release
 ./target/release/soc
 ```
 
-Policy packs (issue #6) load from `policies/p0/` and `policies/soc/` relative to the working directory.
+Policy packs load from `policies/p0/` and `policies/soc/` relative to the working directory (`policies/p0/README.md`).
 
 ## Planned packaging (issue #16)
 

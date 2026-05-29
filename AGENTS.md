@@ -82,7 +82,7 @@ Before finishing a change: workspace build + tests green; clippy clean; no secre
 | 3 | `catalog/owasp-llm-asi.yaml` ✓ |
 | 4 | `crates/guardian` ✓ |
 | 5 | `crates/trace` |
-| 6 | `policies/p0` |
+| 6 | `policies/p0` ✓ |
 | 7–8 | `apps/lab` + P0 smoke 10/10 |
 | 9–10 | `apps/soc` + analyst gate |
 | 11–15 | Coverage matrix, docs, demo, tag `v0.1.0-submission` |
@@ -107,9 +107,10 @@ When adding behaviour docs, prefer `docs/` — keep README and AGENTS.md short.
 |------|:----:|:----:|
 | `agentTrigger`, `toolCallRequest`, `agentResponse` | ✓ | ✓ |
 | `knowledgeRetrieval`, `memoryStore` | ✓ | — |
+| `agbom`, `a2a`, `trace`, `humanGate` | ✓ (policy + parse) | — |
 | `toolCallResult`, `userMessage` | — | ✓ (issue #20) |
 
-Full table: [docs/architecture/acs-hooks.md](docs/architecture/acs-hooks.md). Policy engine: [docs/architecture/guardian.md](docs/architecture/guardian.md). A2A / MCP — stub + doc only before 30 Jun.
+Full table: [docs/architecture/acs-hooks.md](docs/architecture/acs-hooks.md). Policy pack: [policies/p0/README.md](policies/p0/README.md) ([#30](https://github.com/edgesentry/agent-control/pull/30)). Policy engine: [docs/architecture/guardian.md](docs/architecture/guardian.md).
 
 ## References
 
